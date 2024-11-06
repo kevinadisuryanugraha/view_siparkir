@@ -137,14 +137,14 @@
 </style>
 <div class="main-content">
     <header>
-        <h2>Dashboard <span>Control Panel</span></h2>
+        <h2>Halaman Profil<span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>    
     
     <!-- ruang kreasi developer -->
     <div class="card-profil">
         <div class="card-profil-header">
-            <a href="#" class="pure-button-primary pure-button">Tambah Profil</a>
+            <a href="add_user.php" class="pure-button-primary pure-button">Tambah Profil</a>
         </div>
         <div class="card-profil-content">
             <table id="profil" class="cell-border" >

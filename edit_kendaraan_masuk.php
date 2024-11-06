@@ -13,7 +13,7 @@
     <div class="container">
         <header>
             <h2>Edit Kendaraan Masuk</h2>
-            <a href="tambah_kendaraan_masuk.html" class="pure-button button-success">
+            <a href="kendaraan_masuk.php" class="pure-button button-success">
                 <i class="fa-solid fa-left-long"></i> Kembali
             </a>
         </header>
