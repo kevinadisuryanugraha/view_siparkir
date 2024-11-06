@@ -1,5 +1,5 @@
 <?php
-require_once 'config/config.php';
+require_once 'config/congfig.php';
 
 // fungsi tambah kendaraan masuk by Abdul
 function tambah_kendaraan_masuk()
@@ -14,7 +14,7 @@ function tambah_kendaraan_masuk()
     return $eksekusi;
 }
 
-// fungsi mengambil data untuk edit kendaraan masuk by Abdul
+// fungsi mengambil data untuk edit kendaraan masuk
 function edit_kendaraan_masuk()
 {
     $transaksi_kendaraan = $_GET['siparkir_transaksi'];
