@@ -155,7 +155,7 @@
 
 <div class="main-content">
     <header>
-        <h2>Dashboard <span>Control Panel</span></h2>
+        <h2>Kendaraan Masuk<span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
@@ -163,7 +163,7 @@
     <div class="dashboard">
         <div class="container">
             <div class="header">
-                <h1>Kendaraan Masuk <span>Data kendaraan Masuk</span></h1>
+                <h1>Data Kendaraan Masuk</h1>
                 <div class="button header_btn">
                     <a href="tambah_kendaraan_masuk.php" class="header_btn_isi" style="text-decoration:none"><i class="fa-solid fa-plus"></i> Tambah</a>
                     <button class="header_btn_isi"><i class="fa-solid fa-file-invoice"></i> cetak PDF</button>
@@ -193,8 +193,8 @@
                         <td>0 jam, 1 menit, 38 detik</td>
                         <td>Rp.23,980,000,-</td>
                         <td>
-                            <button class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                Keluar</button>
+                            <a href="" class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                Keluar</a>
                         </td>
                         <td class="button">
                             <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
@@ -283,13 +283,13 @@
                         <td>0 jam, 1 menit, 38 detik</td>
                         <td>Rp.23,980,000,-</td>
                         <td>
-                            <button class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                Keluar</button>
+                            <a href="kendaraan_keluar.php" class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                Keluar</a>
                         </td>
                         <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <a class="btn btn-success"><i class="fa-solid fa-file"></i></a>
                             <a href="edit_kendaraan_masuk.php" class="btn btn-warning"><i class="fa-solid fa-gear"></i></a>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                            <a class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr>
                     <tr>

@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link href="assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
+<link href="../view_siparkir/assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
 <style>
             /* General Reset */
             * {
@@ -195,7 +195,7 @@
     </script>
     <!-- end kreasi development section -->
 </div>
-<?php include 'dashboard/footer.php'; ?>
+<?php include 'footer.php'; ?>
    
 </body>
 

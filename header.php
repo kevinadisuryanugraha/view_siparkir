@@ -1,3 +1,9 @@
+<?php
+
+require_once "function.php"
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
