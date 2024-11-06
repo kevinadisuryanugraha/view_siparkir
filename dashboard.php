@@ -1,3 +1,6 @@
+<?php
+    include "header.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,37 +26,42 @@
 
             <!-- Stats Cards -->
             <section class="stats-grid">
-                <div class="card green">
-                    <div class="card-icon"><i class="fas fa-car"></i></div>
-                    <h3>9</h3>
-                    <p>Jenis Kendaraan</p>
-                </div>
-                <div class="card orange">
-                    <div class="card-icon"><i class="fas fa-user-plus"></i></div>
-                    <h3>2</h3>
-                    <p>Pengguna</p>
-                </div>
-                <div class="card blue">
-                    <div class="card-icon"><i class="fas fa-car-side"></i></div>
-                    <h3>0</h3>
-                    <p>Kendaraan Masuk Hari Ini</p>
-                </div>
-                <div class="card blue">
-                    <div class="card-icon"><i class="fas fa-car"></i></div>
-                    <h3>13</h3>
-                    <p>Kendaraan Masuk Tahun Ini</p>
-                </div>
-                <div class="card green">
-                    <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
-                    <h3>4,450,000</h3>
-                    <p>Pemasukan Tahun Ini</p>
-                </div>
-                <div class="card green">
-                    <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
-                    <h3>4,450,000</h3>
-                    <p>Total Pemasukan</p>
-                </div>
-            </section>
+            <div class="card green">
+                <div class="card-icon"><i class="fas fa-car"></i></div>
+                <h3><?php echo total_kendaraan(); ?></h3>
+                <p>Jenis Kendaraan</p>
+            </div>
+
+            <div class="card orange">
+                <div class="card-icon"><i class="fas fa-user-plus"></i></div>
+                <h3><?php echo total_user(); ?></h3>
+                <p>Pengguna</p>
+            </div>
+
+            <div class="card blue">
+                <div class="card-icon"><i class="fas fa-car-side"></i></div>
+                <h3><?php echo total_kendaraan_masuk_hari_ini(); ?></h3>
+                <p>Kendaraan Masuk Hari Ini</p>
+            </div>
+
+            <div class="card blue">
+                <div class="card-icon"><i class="fas fa-car"></i></div>
+                <h3><?php echo total_kendaraan_masuk_tahun_ini(); ?></h3>
+                <p>Kendaraan Masuk Tahun Ini</p>
+            </div>
+
+            <div class="card green">
+                <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h3>Rp <?php echo number_format(total_pemasukan_tahun_ini(), 0, ',', '.'); ?></h3>
+                <p>Pemasukan Tahun Ini</p>
+            </div>
+
+            <div class="card green">
+                <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h3>Rp <?php echo number_format(total_pemasukan(), 0, ',', '.'); ?></h3>
+                <p>Total Pemasukan</p>
+            </div>
+        </section>
 
             <!-- Footer -->
             <?php include 'footer.php'; ?>
