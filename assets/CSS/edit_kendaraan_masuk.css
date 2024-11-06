@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f3f3f3;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    width: 500px;
+    border-radius: 7px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 4px solid green;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group:first-of-type {
+    margin-top: 35px;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.input-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon i {
+    position: absolute;
+    left: 20px;
+}
+
+.pure-form input[type=color], .pure-form input[type=date], .pure-form input[type=datetime-local], .pure-form input[type=datetime], .pure-form input[type=email], .pure-form input[type=month], .pure-form input[type=number], .pure-form input[type=password], .pure-form input[type=search], .pure-form input[type=tel], .pure-form input[type=text], .pure-form input[type=time], .pure-form input[type=url], .pure-form input[type=week], .pure-form select, .pure-form textarea {
+    padding-left: 50px;
+}
+
+/* PURE BUTTON */
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.button-success {
+    background: rgb(28, 184, 65);
+    
+}
+.button-error {
+    background: rgb(202, 60, 60);
+    
+}
+.button-warning {
+    background: rgb(223, 117, 20);
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221);
+}

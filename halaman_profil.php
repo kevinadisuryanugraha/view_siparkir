@@ -159,6 +159,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php ?>
                     <tr>
                         <td>1</td>
                         <td>superadmin</td>
@@ -211,7 +212,9 @@
                         <td>0892173813</td>
                         <td>admin</td>
                         <td><a href="edit_user.php" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
+                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash icon-color"></i></a></td>
                     </tr>
+                    
                 </tbody>
             </table>
         </div>
