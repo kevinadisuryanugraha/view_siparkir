@@ -247,3 +247,26 @@ function delete_kendaraan() {
     }
 }
 
+function getLaporanPemasukan($startDate, $endDate) {
+    global $db;
+
+    $query = "SELECT * FROM siparkir_transaksi WHERE waktu_masuk BETWEEN ? AND ?";
+    $stmt = $db->prepare($query);
+
+    if (!$stmt) {
+        die("Query preparation failed: " . $db->error);
+    }
+
+    $stmt->bind_param("ss", $startDate, $endDate);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $results = $result->fetch_all(MYSQLI_ASSOC);
+
+    $totalPemasukan = 0;
+    foreach ($results as $row) {
+        $totalPemasukan += $row['biaya'];
+    }
+
+    return ['data' => $results, 'total' => $totalPemasukan];
+}
