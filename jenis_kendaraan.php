@@ -1,13 +1,22 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
 <link href="assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
 <link rel="stylesheet" href="assets/CSS/style.css">
     
+=======
+<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
+<?php 
+$vehicles = get_list_kendaraan();
+delete_kendaraan();
+?>
+
+>>>>>>> 91bba9d170b4ff6c2dde1a17e80410dcf1ffc685
 <div class="main-content">
     <header>
         <h2>Jenis Kendaraan & Biaya <span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-    </header>    
+    </header>
 
     <!-- ruang kreasi developer -->
     <div class="container">
@@ -29,15 +38,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>truk</td>
-                    <td>Rp.25,000</td>
-                    <td class="button">
-                        <a href="edit_jenis_kendaraan.php" class="btn btn-warning"><i class="fa-solid fa-gear"></i></a >
-                        <a href="" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a >
-                    </td>
-                </tr>
+            <?php if (count($vehicles) > 0) : ?>
+                    <?php $no = 1;
+                    foreach ($vehicles as $vehicle) : ?>
+                        <tr>
+                            <td><?php echo $no; ?></td>
+                            <td><?php echo $vehicle['jenis_kendaraan']; ?></td>
+                            <td>Rp<?php echo number_format($vehicle['biaya_jam']); ?></td>
+                            <td class="button">
+                                <a href="edit_jenis_kendaraan.php?id=<?php echo $vehicle['id']; ?>" class="btn btn-warning"><i class="fa-solid fa-gear"></i></a>
+                                <a href="jenis_kendaraan.php?id=<?php echo $vehicle['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin hapus kendaraan ini?')"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    <?php $no++;
+                    endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
@@ -46,7 +61,7 @@
     <script src="DataTables/datatables.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#Jenis_kendaraan').DataTable({
                 responsive: true,
                 paging: true,
@@ -62,7 +77,7 @@
     <!-- end kreasi development section -->
 </div>
 <?php include 'footer.php'; ?>
-   
+
 </body>
 
 </html>
