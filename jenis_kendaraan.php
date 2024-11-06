@@ -1,20 +1,15 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
 <link href="assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
-<<<<<<< HEAD
-<link rel="stylesheet" href="assets/CSS/style.css">
-    
-=======
 <link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
 <?php 
 $vehicles = get_list_kendaraan();
 delete_kendaraan();
 ?>
 
->>>>>>> 91bba9d170b4ff6c2dde1a17e80410dcf1ffc685
 <div class="main-content">
     <header>
-        <h2>Jenis Kendaraan & Biaya <span>Control Panel</span></h2>
+        <h2>Tambah Jenis Kendaraan<span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 

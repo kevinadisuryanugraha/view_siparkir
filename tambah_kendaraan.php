@@ -1,13 +1,5 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<<<<<<< HEAD
-<link href="assets/CSS/edit_jenis_kendaraan.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="assets/CSS/style.css">
-
-<div class="main-content">
-    <header>
-        <h2>Tambah Kendaraan <span>Control Panel</span></h2>
-=======
 <?php
 require_once 'functions.php';
 add_kendaraan();
@@ -16,8 +8,7 @@ add_kendaraan();
 <link rel="stylesheet" href="assets/CSS/tambah_jenis_kendaraan.css">
 <div class="main-content">
     <header>
-        <h2>Tambah <span>Jenis Kendaraan</span></h2>
->>>>>>> 91bba9d170b4ff6c2dde1a17e80410dcf1ffc685
+        <h2>Tambah Jenis Kendaraan<span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 

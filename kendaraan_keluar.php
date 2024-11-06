@@ -20,7 +20,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 }
 ?>
 
-<link rel="stylesheet" href="assets/CSS/siparkir_kendaraan_keluar.css?v=1.1">
+<link rel="stylesheet" href="assets/CSS/siparkir_kendaraan_keluar.css">
 <link rel="stylesheet" href="assets/CSS/style.css">
 
 <div class="main-content">
@@ -28,14 +28,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         <h2>Dashboard <span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
-
-    <!-- ruang kreasi developer -->
-    <div class="main-content">
-    <header>
-        <h2> Kendaraan Keluar<span>Control Panel</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-    </header>    
-
     <!-- ruang kreasi developer -->
     <div class="dashboard">
     <div class="container">

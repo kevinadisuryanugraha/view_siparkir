@@ -1,12 +1,6 @@
 <?php
-// functions.php
-include '../view_siparkir/config/config.php';
+require_once 'config/config.php';
 
-<<<<<<< HEAD
-// Fungsi untuk menambahkan kendaraan keluar
-function tambahKendaraan($noPlat, $pengemudi, $jenis, $waktuMasuk) {
-    $conn = koneksiDB();
-=======
 // fungsi tambah kendaraan masuk
 function tambah_kendaraan_masuk()
 {
@@ -54,73 +48,51 @@ function delete_kendaraan_masuk()
 function tambahKendaraan($noPlat, $pengemudi, $jenis, $waktuMasuk)
 {
     global $db;
->>>>>>> 91bba9d170b4ff6c2dde1a17e80410dcf1ffc685
     $sql = "INSERT INTO siparkir_transaksi (no_plat, pengemudi, jenis, waktu_masuk) 
             VALUES ('$noPlat', '$pengemudi', '$jenis', '$waktuMasuk')";
-    $conn->query($sql);
-    $conn->close();
+    $db->query($sql);
+    $db->close();
 }
 
 // Fungsi untuk menghapus kendaraan keluar
-<<<<<<< HEAD
-function hapusKendaraan($id) {
-    $conn = koneksiDB();
-=======
 function hapusKendaraan($id)
 {
     global $db;
->>>>>>> 91bba9d170b4ff6c2dde1a17e80410dcf1ffc685
     $sql = "DELETE FROM siparkir_transaksi WHERE id = $id";
-    $conn->query($sql);
-    $conn->close();
+    $db->query($sql);
+    $db->close();
 }
 
 // Fungsi untuk membatalkan kendaraan keluar
-<<<<<<< HEAD
-function batalKeluar($id) {
-    $conn = koneksiDB();
-=======
 function batalKeluar($id)
 {
     global $db;
->>>>>>> 91bba9d170b4ff6c2dde1a17e80410dcf1ffc685
     $sql = "UPDATE siparkir_transaksi SET waktu_keluar = NULL WHERE id = $id";
-    $conn->query($sql);
-    $conn->close();
+    $db->query($sql);
+    $db->close();
 }
 
 // Fungsi untuk menampilkan data kendaraan keluar
-<<<<<<< HEAD
-function getDataKendaraan() {
-    $conn = koneksiDB();
-    $result = $conn->query("SELECT * FROM siparkir_transaksi ORDER BY id ASC");
-=======
 function getDataKendaraan()
 {
     global $db;
     $result = $db->query("SELECT * FROM siparkir_transaksi ORDER BY id ASC");
->>>>>>> 91bba9d170b4ff6c2dde1a17e80410dcf1ffc685
     $data = [];
     while ($row = $result->fetch_assoc()) {
         $data[] = $row;
     }
-    $conn->close();
+    $db->close();
     return $data;
 }
 
 // Fungsi untuk mendapatkan path PDF
-<<<<<<< HEAD
-function getPDFPath($id) {
-    $conn = koneksiDB();
-=======
 function getPDFPath($id)
 {
     global $db;
->>>>>>> 91bba9d170b4ff6c2dde1a17e80410dcf1ffc685
     $sql = "SELECT file_pdf FROM siparkir_transaksi WHERE id = $id";
-    $result = $conn->query($sql);
+    $result = $db->query($sql);
     $filePDF = $result->fetch_assoc()['file_pdf'];
-    $conn->close();
+    $db->close();
     return $filePDF;
 }
 
