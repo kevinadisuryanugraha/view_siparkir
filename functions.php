@@ -4,22 +4,25 @@ require_once 'config/config.php';
 // fungsi tambah kendaraan masuk
 function tambah_kendaraan_masuk()
 {
+    global $db;
     $plat           = $_POST['no_plat'];
     $pengemudi      = $_POST['pengemudi'];
-    $jenis_vehicle  = $_POST['id_kendaraan'];
+    $id_kendaraan  = $_POST['jenis_kendaraan'];
+
 
     $sql_tambah = "INSERT INTO siparkir_transaksi (no_plat, pengemudi, id_kendaraan, waktu_masuk) 
-                VALUES ('$plat', '$pengemudi', '$jenis_vehicle', 'NOW()')";
-    $eksekusi = connect_db()->query($sql_tambah);
+                VALUES ('$plat', '$pengemudi', '$id_kendaraan', 'NOW()')";
+    $eksekusi = $db->query($sql_tambah);
     return $eksekusi;
 }
 
 // fungsi mengambil data untuk edit kendaraan masuk
 function edit_kendaraan_masuk()
 {
+    global $db;
     $transaksi_kendaraan = $_GET['siparkir_transaksi'];
     $sql_ambil_edit = "SELECT * FROM siparkir_transaksi WHERE id='$transaksi_kendaraan'";
-    $eksekusi = connect_db()->query($sql_ambil_edit);
+    $eksekusi = $db->query($sql_ambil_edit);
     return $eksekusi->fetch_assoc();
 
     $plat           = $_POST['no_plat'];
@@ -32,16 +35,17 @@ function edit_kendaraan_masuk()
                         pengemudi='$pengemudi, 
                         id_kendaraan='$jenis_vehicle'
                         WHERE id='$transaksi_kendaraan'";
-    $eksekusi = connect_db()->query($sql_update_kendaraan_masuk);
+    $eksekusi = $db->query($sql_update_kendaraan_masuk);
     return $eksekusi;
 }
 
 // fungsi  hapus kendaraan masuk
 function delete_kendaraan_masuk()
 {
+    global $db;
     $transaksi_kendaraan = $_GET['id'];
     $sql_delete_kendaraan_masuk = "DELETE FROM siparkir_transaksi WHERE id='$transaksi_kendaraan'";
-    $eksekusi = connect_db()->query($sql_delete_kendaraan_masuk);
+    $eksekusi = $db->query($sql_delete_kendaraan_masuk);
     return $eksekusi;
 }
 // Fungsi untuk menambahkan kendaraan keluar

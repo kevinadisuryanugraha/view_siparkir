@@ -177,8 +177,6 @@
                         <th>NAMA PENGEMUDI</th>
                         <th>JENIS KENDARAAN</th>
                         <th>WAKTU MASUK</th>
-                        <th>DURASI</th>
-                        <th>ESTIMASI BIAYA</th>
                         <th>AKSI</th>
                         <th>OPSI</th>
                     </tr>
