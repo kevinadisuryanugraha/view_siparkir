@@ -1,5 +1,5 @@
 <?php
-require_once 'config/congfig.php';
+require_once 'config/config.php';
 
 // fungsi tambah kendaraan masuk
 function tambah_kendaraan_masuk()
