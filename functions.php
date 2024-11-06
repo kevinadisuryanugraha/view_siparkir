@@ -1,7 +1,7 @@
 <?php
 require_once 'config/congfig.php';
 
-// fungsi tambah kendaraan masuk by Abdul
+// fungsi tambah kendaraan masuk
 function tambah_kendaraan_masuk()
 {
     $plat           = $_POST['no_plat'];
@@ -36,7 +36,7 @@ function edit_kendaraan_masuk()
     return $eksekusi;
 }
 
-// fungsi  hapus kendaraan masuk by Abdul
+// fungsi  hapus kendaraan masuk
 function delete_kendaraan_masuk()
 {
     $transaksi_kendaraan = $_GET['id'];
