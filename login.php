@@ -1,13 +1,4 @@
 <?php
-// include 'header.php';
-// index.php
-// Tambahkan ini di atas halaman dashboard.php atau login.php
-// session_start();
-// header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
-// header("Pragma: no-cache"); // HTTP 1.0.
-// header("Expires: 0"); // Proxies
-// session_start();
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
