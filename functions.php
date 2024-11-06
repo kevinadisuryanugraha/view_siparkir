@@ -247,31 +247,3 @@ function delete_kendaraan() {
     }
 }
 
-// fungsi login
-function login_siparkir()
-{
-    global $conn;
-    $email = $_POST['email'];
-    $password = md5($_POST['password']); // pastikan password ter-hash
-
-    // Query login user
-    $sql_login_user = "SELECT * FROM siparkir_user WHERE email = '$email' AND password = '$password'";
-    $eksekusi_login_user = $db->query($sql_login_user);
-
-    // Jika login berhasil
-    if ($eksekusi_login_user->num_rows > 0) {
-        $user = $eksekusi_login_user->fetch_assoc();
-        $_SESSION['log-in'] = true;
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['id_user'] = $user['id_user'];
-        return $user;
-    }else{
-        return false;
-    }
-}
-// fungsi logout
-session_start();
-session_unset();
-session_destroy();
-header("Location: login.php");
-exit();

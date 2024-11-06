@@ -3,6 +3,7 @@
 <link href="assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
 <link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
 <?php 
+include 'functions.php';
 $vehicles = get_list_kendaraan();
 delete_kendaraan();
 ?>
@@ -72,7 +73,3 @@ delete_kendaraan();
     <!-- end kreasi development section -->
 </div>
 <?php include 'footer.php'; ?>
-
-</body>
-
-</html>
