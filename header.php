@@ -1,7 +1,11 @@
 <?php
+<<<<<<< HEAD
 
 require_once "functions.php";
 
+=======
+// require_once "functions.php"
+>>>>>>> a1a43d25aa0e6bb7d54cde104af3914a27e52a01
 ?>
 
 <!DOCTYPE html>

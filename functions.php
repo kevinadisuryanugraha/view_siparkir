@@ -29,8 +29,8 @@ function edit_kendaraan_masuk()
     $pengemudi      = $_POST['pengemudi'];
     $jenis_vehicle  = $_POST['id_kendaraan'];
 
-    $sql_update_kendaraan_masuk = 
-                        "UPDATE siparkir_transaksi 
+    $sql_update_kendaraan_masuk =
+        "UPDATE siparkir_transaksi 
                         SET no_plat ='$plat, 
                         pengemudi='$pengemudi, 
                         id_kendaraan='$jenis_vehicle'
@@ -49,7 +49,8 @@ function delete_kendaraan_masuk()
     return $eksekusi;
 }
 // Fungsi untuk menambahkan kendaraan keluar
-function tambahKendaraan($noPlat, $pengemudi, $jenis, $waktuMasuk) {
+function tambahKendaraan($noPlat, $pengemudi, $jenis, $waktuMasuk)
+{
     global $db;
     $sql = "INSERT INTO siparkir_transaksi (no_plat, pengemudi, jenis, waktu_masuk) 
             VALUES ('$noPlat', '$pengemudi', '$jenis', '$waktuMasuk')";
@@ -58,7 +59,8 @@ function tambahKendaraan($noPlat, $pengemudi, $jenis, $waktuMasuk) {
 }
 
 // Fungsi untuk menghapus kendaraan keluar
-function hapusKendaraan($id) {
+function hapusKendaraan($id)
+{
     global $db;
     $sql = "DELETE FROM siparkir_transaksi WHERE id = $id";
     $db->query($sql);
@@ -66,7 +68,8 @@ function hapusKendaraan($id) {
 }
 
 // Fungsi untuk membatalkan kendaraan keluar
-function batalKeluar($id) {
+function batalKeluar($id)
+{
     global $db;
     $sql = "UPDATE siparkir_transaksi SET waktu_keluar = NULL WHERE id = $id";
     $db->query($sql);
@@ -74,7 +77,8 @@ function batalKeluar($id) {
 }
 
 // Fungsi untuk menampilkan data kendaraan keluar
-function getDataKendaraan() {
+function getDataKendaraan()
+{
     global $db;
     $result = $db->query("SELECT * FROM siparkir_transaksi ORDER BY id ASC");
     $data = [];
@@ -86,7 +90,8 @@ function getDataKendaraan() {
 }
 
 // Fungsi untuk mendapatkan path PDF
-function getPDFPath($id) {
+function getPDFPath($id)
+{
     global $db;
     $sql = "SELECT file_pdf FROM siparkir_transaksi WHERE id = $id";
     $result = $db->query($sql);
@@ -95,7 +100,8 @@ function getPDFPath($id) {
     return $filePDF;
 }
 
-function get_all_users() {
+function get_all_users()
+{
 
     global $db;
     $sql = "SELECT * FROM siparkir_user";
@@ -111,72 +117,160 @@ function get_all_users() {
     return $users;
 }
 
+
 function total_kendaraan()
-    {
-        global $db;
-        $sql_total_kendaraan = "SELECT COUNT(*) AS total FROM siparkir_kendaraan";
-        $eksekusi_total_kendaraan = $db->query($sql_total_kendaraan);
-        return $eksekusi_total_kendaraan->fetch_assoc()['total'];
+{
+    global $db;
+    $sql_total_kendaraan = "SELECT COUNT(*) AS total FROM siparkir_kendaraan";
+    $eksekusi_total_kendaraan = $db->query($sql_total_kendaraan);
+    return $eksekusi_total_kendaraan->fetch_assoc()['total'];
+}
+
+function total_user()
+{
+    global $db;
+    $sql_total_user = "SELECT COUNT(*) AS total FROM siparkir_user";
+    $eksekusi_total_user = $db->query($sql_total_user);
+    return $eksekusi_total_user->fetch_assoc()['total'];
+}
+
+function total_kendaraan_masuk_hari_ini()
+{
+    global $db;
+    $tanggal = date("Y-m-d");
+    $sql_total_kendaraan_masuk_hari_ini = "SELECT COUNT(*) AS total FROM siparkir_transaksi WHERE DATE(waktu_masuk) = '$tanggal'";
+    $eksekusi_total_kendaraan_masuk_hari_ini = $db->query($sql_total_kendaraan_masuk_hari_ini);
+    return $eksekusi_total_kendaraan_masuk_hari_ini->fetch_assoc()['total'];
+}
+
+function total_kendaraan_masuk_tahun_ini()
+{
+    global $db;
+    $tahun = date("Y");
+    $sql_total_kendaraan_masuk_tahun_ini = "SELECT COUNT(*) AS total FROM siparkir_transaksi WHERE YEAR(waktu_masuk) = '$tahun'";
+    $eksekusi_total_kendaraan_masuk_tahun_ini = $db->query($sql_total_kendaraan_masuk_tahun_ini);
+    return $eksekusi_total_kendaraan_masuk_tahun_ini->fetch_assoc()['total'];
+}
+
+function total_pemasukan_tahun_ini()
+{
+    global $db;
+    $tahun = date("Y");
+    $sql_total_pemasukan_tahun_ini = "SELECT SUM(biaya) AS total FROM siparkir_transaksi WHERE YEAR(waktu_masuk) = '$tahun'";
+    $eksekusi_total_pemasukan_tahun_ini = $db->query($sql_total_pemasukan_tahun_ini);
+    return $eksekusi_total_pemasukan_tahun_ini->fetch_assoc()['total'];
+}
+
+function total_pemasukan()
+{
+    global $db;
+    $sql_total_pemasukan = "SELECT SUM(biaya) AS total FROM siparkir_transaksi";
+    $eksekusi_total_pemasukan = $db->query($sql_total_pemasukan);
+    return $eksekusi_total_pemasukan->fetch_assoc()['total'];
+}
+
+function get_list_kendaraan()
+{
+    global $db;
+
+    $sql = "SELECT * FROM siparkir_kendaraan";
+    $eksekusi = $db->query($sql);
+
+    $data = array();
+    while ($row = $eksekusi->fetch_assoc()) {
+        $data[] = $row;
     }
 
-    function total_user()
-    {
-        global $db;
-        $sql_total_user = "SELECT COUNT(*) AS total FROM siparkir_user";
-        $eksekusi_total_user = $db->query($sql_total_user);
-        return $eksekusi_total_user->fetch_assoc()['total'];
-    }
+    return $data;
+}
 
-    function total_kendaraan_masuk_hari_ini()
-    {
-        global $db;
-        $tanggal = date("Y-m-d");
-        $sql_total_kendaraan_masuk_hari_ini = "SELECT COUNT(*) AS total FROM siparkir_transaksi WHERE DATE(waktu_masuk) = '$tanggal'";
-        $eksekusi_total_kendaraan_masuk_hari_ini = $db->query($sql_total_kendaraan_masuk_hari_ini);
-        return $eksekusi_total_kendaraan_masuk_hari_ini->fetch_assoc()['total'];
-    }
+function add_kendaraan() {
+    global $db;
 
-    function total_kendaraan_masuk_tahun_ini()
-    {
-        global $db;
-        $tahun = date("Y");
-        $sql_total_kendaraan_masuk_tahun_ini = "SELECT COUNT(*) AS total FROM siparkir_transaksi WHERE YEAR(waktu_masuk) = '$tahun'";
-        $eksekusi_total_kendaraan_masuk_tahun_ini = $db->query($sql_total_kendaraan_masuk_tahun_ini);
-        return $eksekusi_total_kendaraan_masuk_tahun_ini->fetch_assoc()['total'];
-    }
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $jenis_kendaraan = $_POST['jenis_kendaraan'];
+        $biaya_jam = $_POST['biaya_jam'];
 
-    function total_pemasukan_tahun_ini()
-    {
-        global $db;
-        $tahun = date("Y");
-        $sql_total_pemasukan_tahun_ini = "SELECT SUM(biaya) AS total FROM siparkir_transaksi WHERE YEAR(waktu_masuk) = '$tahun'";
-        $eksekusi_total_pemasukan_tahun_ini = $db->query($sql_total_pemasukan_tahun_ini);
-        return $eksekusi_total_pemasukan_tahun_ini->fetch_assoc()['total'];
-    }
+        $sql = "INSERT INTO siparkir_kendaraan (jenis_kendaraan, biaya_jam) VALUES ('$jenis_kendaraan', '$biaya_jam')";
+        $eksekusi = $db->query($sql);
 
-    function total_pemasukan()
-    {
-        global $db;
-        $sql_total_pemasukan = "SELECT SUM(biaya) AS total FROM siparkir_transaksi";
-        $eksekusi_total_pemasukan = $db->query($sql_total_pemasukan);
-        return $eksekusi_total_pemasukan->fetch_assoc()['total'];
-    }
-
-    
-function ambil_data_kendaraan_masuk()
-    {
-        global $db;
-
-        $sql_ambil_data_transaksi = "SELECT siparkir_transaksi.*, siparkir_kendaraan.jenis_kendaraan
-        FROM siparkir_transaksi
-        LEFT JOIN siparkir_kendaraan 
-        ON siparkir_transaksi.id_kendaraan = siparkir_kendaraan.id";
-        $eksekusi = $db->query($sql_ambil_data_transaksi);
-        $result = array();
-
-        while ($row = $eksekusi->fetch_assoc()) {
-            $result[] = $row;
+        if($eksekusi) {
+            header('Location: jenis_kendaraan.php');
+            exit;
         }
+    } 
+}
 
-        return $result;
+function get_kendaraan_by_id() {
+    global $db;
+
+    $data = array();
+    if(isset($_GET['id'])) {
+        $get_id = $_GET['id'];
+        $sql = "SELECT * FROM siparkir_kendaraan WHERE id = '$get_id'";
+        $eksekusi = $db->query($sql);
+
+        if($eksekusi && $eksekusi->num_rows > 0) {
+            $data = $eksekusi->fetch_assoc();
+        }
     }
+    return $data;
+}
+
+function update_kendaraan() {
+    global $db;
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id = $_POST['id'];
+        $jenis_kendaraan = $_POST['jenis_kendaraan'];
+        $biaya_jam = $_POST['biaya_jam'];
+
+        $sql = "UPDATE siparkir_kendaraan SET jenis_kendaraan = '$jenis_kendaraan', biaya_jam = '$biaya_jam' WHERE id = '$id'";
+        $eksekusi = $db->query($sql);
+
+        if($eksekusi) {
+            header('Location: jenis_kendaraan.php');
+            exit;
+        }
+    } 
+}
+
+function delete_kendaraan() {
+    global $db;
+
+    if(isset($_GET['id'])) {
+        $get_id = $_GET['id'];
+        
+        $sql = "DELETE FROM siparkir_kendaraan WHERE id = '$get_id'";
+        $eksekusi = $db->query($sql);
+
+        if($eksekusi) {
+            header('Location: jenis_kendaraan.php');
+            exit;
+        }
+    }
+}
+
+function getLaporanPemasukan($startDate, $endDate) {
+    global $db;
+
+    $query = "SELECT * FROM siparkir_transaksi WHERE waktu_masuk BETWEEN ? AND ?";
+    $stmt = $db->prepare($query);
+
+    if (!$stmt) {
+        die("Query preparation failed: " . $db->error);
+    }
+
+    $stmt->bind_param("ss", $startDate, $endDate);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $results = $result->fetch_all(MYSQLI_ASSOC);
+
+    $totalPemasukan = 0;
+    foreach ($results as $row) {
+        $totalPemasukan += $row['biaya'];
+    }
+
+    return ['data' => $results, 'total' => $totalPemasukan];
+}
