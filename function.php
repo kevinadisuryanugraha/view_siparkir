@@ -1,7 +1,5 @@
 <?php
-require_once 'db_siparkir.php';
-
-// fungsi tambah kendaraan masuk by Abdul
+// fungsi tambah kendaraan masuk
 function tambah_kendaraan_masuk()
 {
     $plat           = $_POST['no_plat'];
@@ -14,7 +12,7 @@ function tambah_kendaraan_masuk()
     return $eksekusi;
 }
 
-// fungsi mengambil data untuk edit kendaraan masuk by Abdul
+// fungsi mengambil data untuk edit kendaraan masuk
 function edit_kendaraan_masuk()
 {
     $transaksi_kendaraan = $_GET['siparkir_transaksi'];
