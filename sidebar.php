@@ -72,7 +72,7 @@
         <a href="#"><i class="fas fa-history"></i> Riwayat Parkir</a>
         <a href="halaman_profil.php"><i class="fas fa-users"></i> Data Pengguna</a>
         <a href="#"><i class="fas fa-file-alt"></i> Laporan Parkir</a>
-        <a href="#"><i class="fas fa-key"></i> Ganti Password</a>
+        <a href="ganti_password.php"><i class="fas fa-key"></i> Ganti Password</a>
         <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </nav>
 </aside>
