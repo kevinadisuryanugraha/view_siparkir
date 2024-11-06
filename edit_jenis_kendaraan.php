@@ -1,39 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'assets/layouts/header.php'; ?>
+<?php include 'assets/layouts/sidebar.php'; ?>
+<?php
+require_once 'functions.php';
+$vehicle = get_kendaraan_by_id();
+update_kendaraan();
+?>
+<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="assets/CSS/edit_jenis_kendaraan.css">
+<div class="main-content">
+    <header>
+        <h2>Dashboard <span>Control Panel</span></h2>
+        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+    </header>    
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Jenis Kendaraan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
-        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/CSS/edit_jenis_kendaraan.css">
-    <link rel="stylesheet" href="assets/CSS/include_1.css">
-</head>
-
-<body>
-    <div class="dashboard">
-        <?php include_once "sidebar.php" ?>
-        <div class="container">
-            <h1>Edit Jenis Kendaraan</h1>
-            <form action="proses_tambah_jenis_kendaraan.php" method="POST">
-                <div class="form-group">
-                    <label for="jenis_kendaraan">Jenis Kendaraan:</label>
-                    <input type="text" id="jenis_kendaraan" name="jenis_kendaraan" required>
+    <!-- ruang kreasi developer -->
+    <div class="container">
+        <h1>Edit Jenis Kendaraan</h1>
+        <form action="edit_jenis_kendaraan.php" method="POST" class="pure-form pure-form-stacked">
+            <input type="hidden" name="id" value="<?php echo $vehicle['id']; ?>">
+            <div class="input-group">
+                <label for="jenis_kendaraan">Jenis Kendaraan:</label>
+                <div class="input-icon">
+                    <i class="fa-solid fa-car-side"></i>
+                    <input type="text" id="jenis_kendaraan" name="jenis_kendaraan" class="pure-input-1" value="<?php echo $vehicle['jenis_kendaraan']; ?>" required>
                 </div>
-                <div class="form-group">
-                    <label for="biaya">Biaya/jam:</label>
-                    <input type="text" id="biaya" name="biaya" required>
+            </div>
+            <div class="input-group">
+                <label for="biaya_jam">Biaya/Jam:</label>
+                <div class="input-icon">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    <input type="number" id="biaya_jam" name="biaya_jam" class="pure-input-1" value="<?php echo $vehicle['biaya_jam']; ?>" required>
                 </div>
-                <button type="submit" class="btn-submit">Simpan</button>
-                <button type="button" class="btn-cancel"
-                    onclick="window.location.href='jenis_kendaraan.php'">Batal</button>
-            </form>
-        </div>
+            </div>
+            <button type="submit" class="btn-submit">Edit</button>
+            <button type="button" class="btn-cancel" onclick="window.location.href='jenis_kendaraan.php'">Batal</button>
+        </form>
     </div>
-</body>
+    <!-- end kreasi development section -->
+</div>
 
-</html>
+<?php include 'assets/layouts/footer.php'; ?>

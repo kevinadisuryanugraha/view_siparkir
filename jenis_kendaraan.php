@@ -1,58 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'assets/layouts/header.php'; ?>
+<?php include 'assets/layouts/sidebar.php'; ?>
+<?php 
+include 'functions.php';
+$vehicles = get_list_kendaraan();
+delete_kendaraan();
+?>
+<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="assets/CSS/jenis_kendaraan.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jenis Kendaraan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="DataTables/datatables.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
-        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/CSS/jenis_kedaraan.css">
-    <link rel="stylesheet" href="assets/CSS/include_1.css">
-</head>
+<div class="main-content">
+    <header>
+        <h2>Dashboard <span>Control Panel</span></h2>
+        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+    </header>    
 
-<body>
-    <div class="dashboard">
-        <?php include_once "sidebar.php"; ?>
-        <div class="container">
-            <div class="header">
-                <h1>Jenis Kendaraan & Biaya <span>Pengaturan parkir</span></h1>
-                <div class="button">
-                    <button><a href="tambah_kendaraan.php">+ Tambah</a></button>
-                    <button> Cetak PDF</button>
-                </div>
+    <!-- ruang kreasi developer -->
+    <div class="container">
+        <div class="header">
+            <h1>Jenis Kendaraan & Biaya <span>Pengaturan Parkir</span></h1>
+            <div class="button">
+                <button><a href="tambah_kendaraan.php">+ Tambah</a></button>
+                <button> Cetak PDF</button>
             </div>
-
-            <table id="Jenis_kendaraan">
-                <thead>
-                    <tr>
-                        <th class="no">NO</th>
-                        <th>Jenis Kendaraan</th>
-                        <th>Biaya/jam</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>truk</td>
-                        <td>Rp.25,000</td>
-                        <td class="button">
-                            <a href="edit_jenis_kendaraan.php" class="btn btn-warning"><i class="fa-solid fa-gear"></i></a>
-                            <a href="" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
+
+        <table id="Jenis_kendaraan">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Jenis Kendaraan</th>
+                    <th>Biaya/Jam</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (count($vehicles) > 0) : ?>
+                    <?php $no = 1;
+                    foreach ($vehicles as $vehicle) : ?>
+                        <tr>
+                            <td><?php echo $no; ?></td>
+                            <td><?php echo $vehicle['jenis_kendaraan']; ?></td>
+                            <td>Rp<?php echo number_format($vehicle['biaya_jam']); ?></td>
+                            <td class="button">
+                                <a href="edit_jenis_kendaraan.php?id=<?php echo $vehicle['id']; ?>" class="btn btn-warning"><i class="fa-solid fa-gear"></i></a>
+                                <a href="jenis_kendaraan.php?id=<?php echo $vehicle['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin hapus kendaraan ini?')"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    <?php $no++;
+                    endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="DataTables/datatables.min.js"></script>
+    <script src="assets/js/DataTables/datatables.min.css"></script>
 
     <script>
         $(document).ready(function() {
@@ -68,6 +70,7 @@
             });
         });
     </script>
-</body>
+    <!-- end kreasi development section -->
+</div>
 
-</html>
+<?php include 'assets/layouts/footer.php'; ?>
