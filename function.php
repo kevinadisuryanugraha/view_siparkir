@@ -105,3 +105,28 @@ function get_all_users() {
     return $users;
 }
 
+// fungsi login
+function login_siparkir()
+{
+    global $conn;
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $sql_login_user = "SELECT * FROM siparkir_user WHERE email = '$email' AND '$password' = '$password'";
+    $eksekusi_login_user = $conn->query($sql_login_user);
+
+    if($eksekusi_login_user->num_rows > 0){
+        $user = $eksekusi_login_user->fetch_assoc();
+        $_SESSION['id_user'] = $user['id_user'];
+        return $user;
+    }else{
+        return false;
+    }
+}
+
+// fungsi logout
+session_start();
+session_unset();
+session_destroy();
+header("Location: login.php");
+exit();

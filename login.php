@@ -1,3 +1,38 @@
+<?php
+// include 'header.php';
+// index.php
+// Tambahkan ini di atas halaman dashboard.php atau login.php
+// session_start();
+// header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+// header("Pragma: no-cache"); // HTTP 1.0.
+// header("Expires: 0"); // Proxies
+// session_start();
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    if ($email === $email && $password === $password) {
+        $_SESSION['email'] = $email;
+        echo "<script>
+            alert('Berhasil login, Silahkan Parkirkan Kendaraan anda ditempat yang telah disediakan');
+            window.location='dashboard.php';
+        </script>";
+        exit;
+    } 
+    else
+    {
+        echo "<script>
+        alert('Email atau password salah');
+        window.location='login.php';
+    </script>";
+    exit;
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +53,7 @@
             <div style="text-align: center;">
                 <img src="assets/images/parkir.png" alt="Library Image" style="max-width: 50%; margin-top: 10px;">
             </div>
-            <form class="pure-form pure-form-stacked" action="#" method="post">
+            <form class="pure-form pure-form-stacked" action="dashboard.php" method="post">
                 <label for="email">Masukkan Email</label>
                 <input type="email" name="email" id="email" required>
 
