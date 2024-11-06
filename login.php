@@ -1,5 +1,7 @@
 <?php
 
+// include 'header.php';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -15,16 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else
     {
         echo "<script>
-        alert('Email atau password salah');
-        window.location='login.php';
-    </script>";
-    exit;
+            alert('Email atau password salah');
+            window.location='login.php';
+        </script>";
+        exit;
     }
 }
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

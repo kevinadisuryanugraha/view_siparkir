@@ -1,106 +1,106 @@
-/* Masukkan gaya CSS langsung di sini */
-body {
-    background-color: #f0f2f5;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-}
+    /* Masukkan gaya CSS langsung di sini */
+    body {
+        background-color: #f0f2f5;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+    }
 
-.container {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    width: 100%;
-}
+    .container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        width: 100%;
+    }
 
-h2 {
-    color: #333;
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
+    h2 {
+        color: #333;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
 
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #374151;
-}
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #374151;
+    }
 
-input[type="text"],
-input[type="file"] {
-    width: 100%;
-    padding: 0.625rem;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 0.875rem;
-}
+    input[type="text"],
+    input[type="file"] {
+        width: 100%;
+        padding: 0.625rem;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 0.875rem;
+    }
 
-.radio-group {
-    display: flex;
-    gap: 1rem;
-}
+    .radio-group {
+        display: flex;
+        gap: 1rem;
+    }
 
-.radio-option {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #374151;
-    font-weight: 500;
-}
+    .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #374151;
+        font-weight: 500;
+    }
 
-.file-input label {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border: 1px solid #d1d5db;
-    background-color: #f8fafc;
-    border-radius: 6px;
-    cursor: pointer;
-    color: #4b5563;
-    font-size: 0.875rem;
-}
+    .file-input label {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border: 1px solid #d1d5db;
+        background-color: #f8fafc;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #4b5563;
+        font-size: 0.875rem;
+    }
 
-.file-input input[type="file"] {
-    display: none;
-}
+    .file-input input[type="file"] {
+        display: none;
+    }
 
-.form-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-}
+    .form-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
 
-.form-buttons button,
-.form-buttons a {
-    padding: 0.625rem 1.25rem;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.875rem;
-    cursor: pointer;
-    text-decoration: none;
-}
+    .form-buttons button,
+    .form-buttons a {
+        padding: 0.625rem 1.25rem;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.875rem;
+        cursor: pointer;
+        text-decoration: none;
+    }
 
-button[type="submit"] {
-    background-color: #22c55e;
-    color: white;
-    border: none;
-}
+    button[type="submit"] {
+        background-color: #22c55e;
+        color: white;
+        border: none;
+    }
 
-button[type="submit"]:hover {
-    background-color: #16a34a;
-}
+    button[type="submit"]:hover {
+        background-color: #16a34a;
+    }
 
-.cancel-button {
-    background-color: #e5e7eb;
-    color: #4b5563;
-}
+    .cancel-button {
+        background-color: #e5e7eb;
+        color: #4b5563;
+    }
 
-.cancel-button:hover {
-    background-color: #d1d5db;
-}
+    .cancel-button:hover {
+        background-color: #d1d5db;
+    }

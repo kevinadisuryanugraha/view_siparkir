@@ -84,8 +84,9 @@
 
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="assets/CSS/edit_user.css">
+<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
+
 
 
 <div class="main-content">
