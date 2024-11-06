@@ -5,7 +5,7 @@
 
 <div class="main-content">
     <header>
-        <h2>Tambah <span>Jenis kendaraan</span></h2>
+        <h2>Tambah Kendaraan <span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>    
 

@@ -5,7 +5,7 @@
     
 <div class="main-content">
     <header>
-        <h2>Jenis Kendaraan & Biaya <span>Pengaturan biaya parkir</span></h2>
+        <h2>Jenis Kendaraan & Biaya <span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>    
 
