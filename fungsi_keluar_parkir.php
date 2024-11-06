@@ -1,5 +1,3 @@
-
-
 <?php
 
     require_once "config/config.php";
@@ -8,7 +6,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $id_parkir = $_GET['id'];
-        function ambil_kendaraan_keluar($id_parkir)
+        function mengambil_ambil_kendaraan_keluar($id_parkir)
         {
             global $db;
 
@@ -21,7 +19,7 @@
             return $eksekusi->fetch_assoc();
         }
         
-        $data_kendaraan = ambil_kendaraan_keluar($id_parkir);
+        $data_kendaraan = mengambil_kendaraan_keluar($id_parkir);
 
         $pengemudi = $_POST['pengemudi'];
         $no_plat = $_POST['no_plat'];
