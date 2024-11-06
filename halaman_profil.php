@@ -159,59 +159,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php ?>
                     <tr>
                         <td>1</td>
                         <td>superadmin</td>
                         <td>superadmin@gmail.com</td>
                         <td>08922173813</td>
                         <td>superadmin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
+                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash icon-color"></i></a></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>admin</td>
-                        <td>admin@gmail.com</td>
-                        <td>0892173813</td>
-                        <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>admin1</td>
-                        <td>admin1@gmail.com</td>
-                        <td>0892173813</td>
-                        <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>admin1</td>
-                        <td>admin1@gmail.com</td>
-                        <td>0892173813</td>
-                        <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
-                    </tr><tr>
-                        <td>3</td>
-                        <td>admin1</td>
-                        <td>admin1@gmail.com</td>
-                        <td>0892173813</td>
-                        <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
-                    </tr><tr>
-                        <td>3</td>
-                        <td>admin1</td>
-                        <td>admin1@gmail.com</td>
-                        <td>0892173813</td>
-                        <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
-                    </tr><tr>
-                        <td>3</td>
-                        <td>admin1</td>
-                        <td>admin1@gmail.com</td>
-                        <td>0892173813</td>
-                        <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
