@@ -1,0 +1,208 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Layout */
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+}
+
+.dashboard {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #2e7d32;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sidebar-header {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile h2 {
+    font-size: 16px;
+}
+
+.profile p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.sidebar nav a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    font-size: 16px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease; /* Menambahkan transisi pada background-color dan padding-left */
+}
+
+.sidebar nav a i {
+    margin-right: 10px;
+}
+
+.sidebar nav a:hover {
+    background-color: #1b5e20;
+    padding-left: 15px; /* Menambahkan padding lebih besar saat hover untuk efek lebih halus */
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+header h2 span {
+    font-size: 16px;
+    color: #666;
+    margin-left: 10px;
+}
+
+.logout-btn {
+    text-decoration: none;
+    color: white;
+    background-color: #1b5e20;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Menambahkan efek transisi */
+    font-weight: bold; /* Menebalkan teks */
+}
+
+.logout-btn:hover {
+    background-color: #1b9e40; /* Mengubah warna saat hover */
+    transform: scale(1.05); /* Sedikit memperbesar tombol saat hover */
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tiga kolom */
+    gap: 15px; /* Jarak antar kartu */
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #e3f2fd; /* Warna latar belakang untuk kartu */
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    color: #333;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease; /* Transisi saat hover */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Memperbesar kartu saat hover */
+}
+
+.card h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.card .card-icon {
+    font-size: 36px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Color Variants */
+.green { background-color: #c8e6c9; }
+.orange { background-color: #ffe0b2; }
+.blue { background-color: #bbdefb; }
+
+/* Charts */
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.chart {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.chart-placeholder {
+    height: 200px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Footer */
+footer {
+    color: #333;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content .version {
+    font-size: 0.9rem;
+    margin: 0 auto;
+    position: relative;
+}
