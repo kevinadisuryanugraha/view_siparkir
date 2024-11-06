@@ -58,3 +58,22 @@
         $eksekusi_total_pemasukan = $db->query($sql_total_pemasukan);
         return $eksekusi_total_pemasukan->fetch_assoc()['total'];
     }
+
+    // untuk kendaraan masuk
+    function ambil_data_kendaraan_masuk()
+    {
+        global $db;
+
+        $sql_ambil_data_transaksi = "SELECT siparkir_transaksi.*, siparkir_kendaraan.jenis_kendaraan
+        FROM siparkir_transaksi
+        LEFT JOIN siparkir_kendaraan 
+        ON siparkir_transaksi.id_kendaraan = siparkir_kendaraan.id";
+        $eksekusi = $db->query($sql_ambil_data_transaksi);
+        $result = array();
+
+        while ($row = $eksekusi->fetch_assoc()) {
+            $result[] = $row;
+        }
+
+        return $result;
+    }
