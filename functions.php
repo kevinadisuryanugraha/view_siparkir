@@ -1,5 +1,5 @@
 <?php
-require_once 'db_siparkir.php';
+require_once 'config/config.php';
 
 // fungsi tambah kendaraan masuk by Abdul
 function tambah_kendaraan_masuk()
@@ -92,6 +92,8 @@ function getPDFPath($id) {
 }
 
 function get_all_users() {
+
+    global $db;
     $sql = "SELECT * FROM siparkir_user";
     $result = $db->query($sql);
 
@@ -104,4 +106,3 @@ function get_all_users() {
 
     return $users;
 }
-

@@ -159,16 +159,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php ?>
+                    <?php $no=1; foreach (get_all_users() as $row): ?>
                     <tr>
-                        <td>1</td>
-                        <td>superadmin</td>
-                        <td>superadmin@gmail.com</td>
-                        <td>08922173813</td>
-                        <td>superadmin</td>
+                        <td><?php echo $no;?></td>
+                        <td><?php echo $row['nama'];?></td>
+                        <td><?php echo $row['email'];?></td>
+                        <td><?php echo $row['no_wa'];?></td>
+                        <td><?php echo $row['level_user'];?></td>
                         <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash icon-color"></i></a></td>
                     </tr>
-                    
+                    <?php $no++; endforeach?>
                 </tbody>
             </table>
         </div>
