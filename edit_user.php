@@ -84,9 +84,8 @@
 
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link href="../assets/CSS/dashboard.css" rel="stylesheet" type="text/css">
+<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="assets/CSS/edit_user.css">
-<link rel="stylesheet" href="assets/CSS/include_1.css">
 
 
 <div class="main-content">
@@ -131,7 +130,7 @@
             
             <div class="form-buttons">
                 <button type="submit">Save Changes</button>
-                <a href="daftar_pengguna.php" class="cancel-button">Cancel</a>
+                <a href="halaman_profil.php" class="cancel-button">Cancel</a>
             </div>
         </form>
     </div>

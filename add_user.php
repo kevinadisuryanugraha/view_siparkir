@@ -40,14 +40,13 @@
 
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link href="../assets/CSS/dashboard.css" rel="stylesheet" type="text/css">
+<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="assets/CSS/add_user.css">
-<link rel="stylesheet" href="assets/CSS/include_1.css">
 
 
 <div class="main-content">
     <header>
-        <h2>Dashboard <span>Control Panel</span></h2>
+        <h2>Add User<span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>    
 
@@ -87,7 +86,7 @@
     
     <div class="form-buttons">
         <input type="submit" value="Add User">
-        <a href="daftar_pengguna.php" class="cancel-button">Cancel</a>
+        <a href="halaman_profil.php" class="cancel-button">Cancel</a>
     </div>
 </form>
 

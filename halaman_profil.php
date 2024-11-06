@@ -137,14 +137,14 @@
 </style>
 <div class="main-content">
     <header>
-        <h2>Dashboard <span>Control Panel</span></h2>
+        <h2>Halaman Profil<span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>    
     
     <!-- ruang kreasi developer -->
     <div class="card-profil">
         <div class="card-profil-header">
-            <a href="#" class="pure-button-primary pure-button">Tambah Profil</a>
+            <a href="add_user.php" class="pure-button-primary pure-button">Tambah Profil</a>
         </div>
         <div class="card-profil-content">
             <table id="profil" class="cell-border" >
@@ -165,7 +165,7 @@
                         <td>superadmin@gmail.com</td>
                         <td>08922173813</td>
                         <td>superadmin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
+                        <td><a href="edit_user.php" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -173,7 +173,7 @@
                         <td>admin@gmail.com</td>
                         <td>0892173813</td>
                         <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
+                        <td><a href="edit_user.php" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
                     </tr>
                     <tr>
                         <td>3</td>
@@ -181,7 +181,7 @@
                         <td>admin1@gmail.com</td>
                         <td>0892173813</td>
                         <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
+                        <td><a href="edit_user.php" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
                     </tr>
                     <tr>
                         <td>3</td>
@@ -189,28 +189,28 @@
                         <td>admin1@gmail.com</td>
                         <td>0892173813</td>
                         <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
+                        <td><a href="edit_user.php" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
                     </tr><tr>
                         <td>3</td>
                         <td>admin1</td>
                         <td>admin1@gmail.com</td>
                         <td>0892173813</td>
                         <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
+                        <td><a href="edit_user.php" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
                     </tr><tr>
                         <td>3</td>
                         <td>admin1</td>
                         <td>admin1@gmail.com</td>
                         <td>0892173813</td>
                         <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
+                        <td><a href="edit_user.php" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
                     </tr><tr>
                         <td>3</td>
                         <td>admin1</td>
                         <td>admin1@gmail.com</td>
                         <td>0892173813</td>
                         <td>admin</td>
-                        <td><a href="#" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
+                        <td><a href="edit_user.php" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash-o icon-color"></i></a></td>
                     </tr>
                 </tbody>
             </table>

@@ -18,7 +18,7 @@
             <div style="text-align: center;">
                 <img src="assets/images/parkir.png" alt="Library Image" style="max-width: 50%; margin-top: 10px;">
             </div>
-            <form class="pure-form pure-form-stacked" action="#" method="post">
+            <form class="pure-form pure-form-stacked" action="dashboard.php" method="post">
                 <label for="email">Masukkan Email</label>
                 <input type="email" name="email" id="email" required>
 
