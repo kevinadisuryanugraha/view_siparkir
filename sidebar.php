@@ -67,13 +67,10 @@
     <nav>
         <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="jenis_kendaraan.php"><i class="fas fa-dollar-sign"></i> Biaya Parkir</a>
-        <a href="kendaraan_masuk.php"><i class="fas fa-car"></i> Kendaraan Masuk</a>
         <a href="daftar_riwayat_parkir.php"><i class="fas fa-history"></i> Riwayat Parkir</a>
         <a href="halaman_profil.php"><i class="fas fa-users"></i> Data Pengguna</a>
-        <a href="dashboard_siparkir_kendaraan_masuk.php"><i class="fas fa-car"></i> Kendaraan Masuk</a>
-        <a href="dashboard_siparkir_kendaraan_keluar.php"><i class="fas fa-history"></i> Riwayat Parkir</a>
-        <a href="daftar_pengguna.php"><i class="fas fa-users"></i> Data Pengguna</a>
-        <a href="#"><i class="fas fa-file-alt"></i> Laporan Parkir</a>
+        <a href="kendaraan_masuk.php"><i class="fas fa-car"></i> Kendaraan Masuk</a>
+        <a href="laporan_"><i class="fas fa-file-alt"></i> Laporan Parkir</a>
         <a href="#"><i class="fas fa-key"></i> Ganti Password</a>
         <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </nav>
