@@ -1,7 +1,6 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
 <?php
-require_once 'functions.php';
 add_kendaraan();
 ?>
 <link href="assets/CSS/style.css" rel="stylesheet" type="text/css">

@@ -27,8 +27,6 @@
                         <th>NAMA PENGEMUDI</th>
                         <th>JENIS KENDARAAN</th>
                         <th>WAKTU MASUK</th>
-                        <th>DURASI</th>
-                        <th>ESTIMASI BIAYA</th>
                         <th>AKSI</th>
                         <th>OPSI</th>
                     </tr>
@@ -44,9 +42,10 @@
                     <td><?php echo $row['pengemudi'];?></td>
                     <td><?php echo $row['jenis_kendaraan'];?></td>
                     <td><?php echo $row['waktu_masuk'];?></td>
-                    <td>
-                        <button class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            Keluar</button>
+                    
+                     <td>
+                        <a href="tambah_kendaraan_keluar.php?id=<?php echo $row['id'];?>" class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            Keluar</a>
                     </td>
                     <td class="button">
                         <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>

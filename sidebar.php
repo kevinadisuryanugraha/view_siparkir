@@ -18,6 +18,7 @@
     text-align: center;
     margin-bottom: 20px;
     font-weight: bold;
+    color: #ffffff;
 }
 
 .profile {
