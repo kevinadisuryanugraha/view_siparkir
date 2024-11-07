@@ -3,14 +3,13 @@
 <link href="assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
 <link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
 <?php 
-include 'functions.php';
 $vehicles = get_list_kendaraan();
 delete_kendaraan();
 ?>
 
 <div class="main-content">
     <header>
-        <h2>Tambah Jenis Kendaraan<span>Control Panel</span></h2>
+        <h2>Jenis Kendaraan & Biaya <span>Pengaturan biaya parkir</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
@@ -19,7 +18,7 @@ delete_kendaraan();
         <div class="header">
             <h1>Jenis Kendaraan & Biaya</h1>
             <div class="button">
-                <button><a href="tambah_kendaraan.php">+ Tambah</a></button>
+            <a href="tambah_kendaraan.php"><button>+ Tambah</button></a>
                 <button> Cetak PDF</button>
             </div>
         </div>
@@ -73,3 +72,7 @@ delete_kendaraan();
     <!-- end kreasi development section -->
 </div>
 <?php include 'footer.php'; ?>
+
+</body>
+
+</html>

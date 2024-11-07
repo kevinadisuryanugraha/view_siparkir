@@ -10,7 +10,7 @@ update_kendaraan();
 
 <div class="main-content">
     <header>
-        <h2>Edit <span>Control Panel</span></h2>
+        <h2>Edit <span>Jenis kendaraan</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>    
 
@@ -42,4 +42,3 @@ update_kendaraan();
 
 <?php include 'footer.php'; ?>
   
-

@@ -17,7 +17,7 @@
             </a>
         </header>
         <div class="form-container">
-            <form action="fungsi_keluar_parkir.php" class="pure-form pure-form-stacked" method="POST">
+            <form action="fungsi_keluar_parkir.php?id=<?php echo $_GET['id']?>" class="pure-form pure-form-stacked" method="POST">
                 <div class="input-group">
                     <label for="pengemudi">Nama Pengemudi (Opsional)</label>
                     <div class="input-icon">
