@@ -4,7 +4,6 @@
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    var_dump($_POST);
     if (tambah_kendaraan_masuk()) {
         echo "<script>
             alert('Berhasil Tambah Kendaraan');

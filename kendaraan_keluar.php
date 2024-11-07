@@ -180,246 +180,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
+                <?php
+                    $no = 1;
+                    foreach(tampil_data_kendaraan_keluar() as $row):
+                ?>
+                <tr>
+                    <td><?php echo $no;?></td>
+                    <td><?php echo $row['no_plat'];?></td>
+                    <td><?php echo $row['pengemudi'];?></td>
+                    <td><?php echo $row['jenis_kendaraan'];?></td>
+                    <td><?php echo $row['waktu_masuk'];?></td>
+                    <td><?php echo $row['waktu_keluar'];?></td>
+                    <td><?php
+                        $waktu_masuk = $row['waktu_masuk'];
+                        $waktu_keluar = $row['waktu_keluar'];
+
+                        $durasi = strtotime($waktu_keluar) - strtotime($waktu_masuk);
+
+                        echo floor($durasi /3600) . 'jam'.floor($durasi / 60 % 60). 'menit' .$durasi % 60 .'detik'; 
+                    ?></td>
+                    <td>Rp.<?php 
+                    $jam = floor($durasi / 3600);
+                    echo number_format($jam*$row['biaya'],0,",",".");?></td>
                         <td class="button">
                             <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
                             <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
+                            </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>B 9989 HJU</td>
-                        <td>-</td>
-                        <td>MINIBUS</td>
-                        <td>13-06-2023 14:12:29</td>
-                        <td>13-06-2023 14:14:07</td>
-                        <td>0 jam, 1 menit, 38 detik</td>
-                        <td>Rp.15,000,-</td>
-                        <td class="button">
-                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
-                    </tr>
+                    <?php 
+                        $no++;
+                        endforeach;
+                    ?>
                 </tbody>
             </table>
         </div>

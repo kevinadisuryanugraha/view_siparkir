@@ -205,13 +205,31 @@ function ambil_data_kendaraan_keluar()
     global $db;
 
     $id_parkir = $_GET['id'];
-    $sql_ambil_data_transaksi = "SELECT siparkir_transaksi.*, siparkir_kendaraan.jenis_kendaraan
+    $sql_ambil_data_transaksi = "SELECT siparkir_transaksi.*, siparkir_kendaraan.*
             FROM siparkir_transaksi
             LEFT JOIN siparkir_kendaraan 
             ON siparkir_transaksi.id_kendaraan = siparkir_kendaraan.id WHERE siparkir_transaksi.id = '$id_parkir'";
     $eksekusi = $db->query($sql_ambil_data_transaksi);
 
     return $eksekusi->fetch_assoc();
+}
+function tampil_data_kendaraan_keluar()
+{
+    global $db;
+
+    $sql_tampil_data_transaksi = "SELECT siparkir_transaksi.*, siparkir_kendaraan.*
+            FROM siparkir_transaksi
+            LEFT JOIN siparkir_kendaraan 
+            ON siparkir_transaksi.id_kendaraan = siparkir_kendaraan.id";
+    $eksekusi = $db->query($sql_tampil_data_transaksi);
+    $result = array();
+
+    while($row = $eksekusi->fetch_assoc())
+    {
+        $result[]=$row;
+    }
+
+    return $result;
 }
 function get_list_kendaraan()
 {
