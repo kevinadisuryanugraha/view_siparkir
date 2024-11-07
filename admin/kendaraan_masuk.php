@@ -41,7 +41,7 @@
                             <td><?php echo $row['no_plat']; ?></td>
                             <td><?php echo $row['pengemudi']; ?></td>
                             <td><?php echo $row['jenis_kendaraan']; ?></td>
-                            <td><?php echo $row['waktu_masuk']; ?></td>
+                            <td><?php echo date('d-m-Y H:i:s',strtotime($row['waktu_masuk'])); ?></td>
 
                             <td>
                                 <a href="tambah_kendaraan_keluar.php?id=<?php echo $row['id']; ?>" class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>
