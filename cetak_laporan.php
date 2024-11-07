@@ -1,6 +1,12 @@
 <?php 
-    require_once 'config/config.php';
+require_once 'config/config.php';
+
+// Get start and end date from query parameters
+$startDate = isset($_GET['startDate']) ? $_GET['startDate'] : null;
+$endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
+
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -33,9 +39,9 @@
 
         th, td {
             border: solid 1px #DDEEEE; 
-            padding: 12px;
+            padding: 10px;
             text-align: left;
-            font-size: 16px;
+            font-size: 14px;
             color: #555;
         }
 
@@ -43,7 +49,6 @@
             font-weight: bold;
             text-align: center;
         }
-
 
         td {
             vertical-align: middle;
@@ -66,12 +71,13 @@
 
     <center>
         <h2>DATA LAPORAN Kendaraan</h2>
+        <p><strong>Dari Tanggal:</strong> <?php echo htmlspecialchars($startDate); ?> <strong>Sampai Tanggal:</strong> <?php echo htmlspecialchars($endDate); ?></p>
     </center>
 
     <table id="example" class="table table-hover">
         <thead>
             <tr>
-                <th>ID Transaksi</th>
+                <th>NO</th>
                 <th>No Plat</th>
                 <th>Pengemudi</th>
                 <th>Jenis Kendaraan</th>
@@ -83,6 +89,7 @@
         </thead>
         <tbody>
             <?php
+                // Build query based on date filter
                 $query = "SELECT 
                         t.id AS transaksi_id,
                         t.no_plat, 
@@ -93,8 +100,12 @@
                         t.durasi, 
                         t.biaya
                     FROM siparkir_transaksi AS t
-                    JOIN siparkir_kendaraan AS k ON t.id_kendaraan = k.id
-                ";
+                    JOIN siparkir_kendaraan AS k ON t.id_kendaraan = k.id";
+                
+                // Add date range filter if provided
+                if ($startDate && $endDate) {
+                    $query .= " WHERE t.waktu_masuk BETWEEN '$startDate' AND '$endDate'";
+                }
                 
                 $result = $db->query($query);
                 $no = 1;

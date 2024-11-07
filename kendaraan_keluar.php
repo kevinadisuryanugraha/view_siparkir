@@ -176,7 +176,6 @@
                         <th>WAKTU KELUAR</th>
                         <th>DURASI</th>
                         <th>BIAYA</th>
-                        <th>OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -202,10 +201,6 @@
                     <td>Rp.<?php 
                     $jam = floor($durasi / 3600);
                     echo number_format($jam*$row['biaya'],0,",",".");?></td>
-                        <td class="button">
-                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                        </td>
                     </tr>
                     <?php 
                         $no++;

@@ -17,7 +17,6 @@
                 <h1>Data Kendaraan Masuk</h1>
                 <div class="button header_btn">
                     <a href="tambah_kendaraan_masuk.php" class="header_btn_isi" style="text-decoration:none"><i class="fa-solid fa-plus"></i> Tambah</a>
-                    <button class="header_btn_isi"><i class="fa-solid fa-file-invoice"></i> cetak PDF</button>
                 </div>
             </div>
             <table id="kendaraan">

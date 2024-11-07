@@ -48,9 +48,10 @@ if ($startDate && $endDate) {
                 <h2>Laporan</h2>
                 <div class="date-range">
                     <p><strong>Dari Tanggal:</strong> <?php echo htmlspecialchars($startDate); ?></p>
-                    <p><strong>Sampai Tanggal:</strong> <?php echo htmlspecialchars($endDate); ?></p>
+                    <p><strong>Sampai Tanggal:</strong> <?php echo  htmlspecialchars($endDate); ?></p>
                 </div>
-                <button class="pdf-button">Cetak PDF</button>
+               <button onclick="window.location.href='cetak_laporan.php?startDate=<?php echo htmlspecialchars($startDate); ?>&endDate=<?php echo htmlspecialchars($endDate); ?>'" class="pdf-button">Cetak PDF</button>
+
                 
                 <table>
                     <thead>
@@ -72,8 +73,8 @@ if ($startDate && $endDate) {
                             <td><?php echo htmlspecialchars($row['no_plat']); ?></td>
                             <td><?php echo htmlspecialchars($row['pengemudi']); ?></td>
                             <td><?php echo htmlspecialchars($row['id_kendaraan']); ?></td>
-                            <td><?php echo htmlspecialchars($row['waktu_masuk']); ?></td>
-                            <td><?php echo htmlspecialchars($row['waktu_keluar']); ?></td>
+                            <td><?php echo date('d-m-Y H:i:s', strtotime( htmlspecialchars($row['waktu_masuk']))); ?></td>
+                            <td><?php echo date('d-m-Y H:i:s', strtotime( htmlspecialchars($row['waktu_keluar']))); ?></td>
                             <td><?php echo htmlspecialchars($row['durasi']); ?></td>
                             <td>Rp <?php echo number_format($row['biaya'], 0, ',', '.'); ?></td>
                         </tr>
