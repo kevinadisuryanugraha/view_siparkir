@@ -1,6 +1,5 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<?php include 'functions.php';?>
 <link rel="stylesheet" href="assets/CSS/style.css">
 <div class="main-content">
     <header>

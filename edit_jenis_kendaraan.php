@@ -1,7 +1,6 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
 <?php 
-require_once 'functions.php';
 $vehicle = get_kendaraan_by_id();
 update_kendaraan();
 ?>

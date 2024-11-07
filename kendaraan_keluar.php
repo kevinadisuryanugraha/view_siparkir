@@ -1,8 +1,6 @@
 <?php
 include 'header.php'; 
-include 'sidebar.php'; 
-
-include 'functions.php';
+include 'sidebar.php';  
 
 if (isset($_GET['action']) && isset($_GET['id'])) {
     $action = $_GET['action'];
