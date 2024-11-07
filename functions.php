@@ -48,6 +48,7 @@ function delete_kendaraan_masuk()
     $eksekusi = $db->query($sql_delete_kendaraan_masuk);
     return $eksekusi;
 }
+
 // Fungsi untuk menambahkan kendaraan keluar
 function tambahKendaraan($noPlat, $pengemudi, $jenis, $waktuMasuk)
 {
