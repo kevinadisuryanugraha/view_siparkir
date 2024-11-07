@@ -4,6 +4,7 @@ require_once 'config/config.php';
 // fungsi tambah kendaraan masuk
 function tambah_kendaraan_masuk()
 {
+    global $db;
     $plat           = $_POST['no_plat'];
     $pengemudi      = $_POST['pengemudi'];
     $jenis_vehicle  = $_POST['id_kendaraan'];
@@ -17,6 +18,7 @@ function tambah_kendaraan_masuk()
 // fungsi mengambil data untuk edit kendaraan masuk
 function edit_kendaraan_masuk()
 {
+    global $db;
     $transaksi_kendaraan = $_GET['siparkir_transaksi'];
     $sql_ambil_edit = "SELECT * FROM siparkir_transaksi WHERE id='$transaksi_kendaraan'";
     $eksekusi = connect_db()->query($sql_ambil_edit);
@@ -39,11 +41,13 @@ function edit_kendaraan_masuk()
 // fungsi  hapus kendaraan masuk
 function delete_kendaraan_masuk()
 {
+    global $db;
     $transaksi_kendaraan = $_GET['id'];
     $sql_delete_kendaraan_masuk = "DELETE FROM siparkir_transaksi WHERE id='$transaksi_kendaraan'";
     $eksekusi = connect_db()->query($sql_delete_kendaraan_masuk);
     return $eksekusi;
 }
+
 // Fungsi untuk menambahkan kendaraan keluar
 function tambahKendaraan($noPlat, $pengemudi, $jenis, $waktuMasuk) {
     global $db;
