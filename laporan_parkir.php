@@ -1,7 +1,6 @@
 <?php include 'header.php'; ?>
     <?php include 'sidebar.php'; ?>
     <?php
-    include 'functions.php';
     $startDate = isset($_GET['startDate']) ? $_GET['startDate'] : null;
 $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
 
