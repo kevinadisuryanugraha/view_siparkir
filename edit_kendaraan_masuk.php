@@ -1,18 +1,23 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    var_dump($_POST);
     if (edit_kendaraan_masuk()) {
         echo "<script>
             alert('Berhasil Edit Kendaraan');
             window.location = 'kendaraan_masuk.php';
             </script>";
+    } else {
+        echo "<script>
+            alert('Gagal Edit Kendaraan');
+            </script>";
     }
 }
 
-$eksekusi = edit_kendaraan_masuk();
+$eksekusi = edit_kendaraan_parkir_masuk();  // Ambil data kendaraan yang akan diedit
 ?>
+
 <link rel="stylesheet" href="assets/CSS/edit_kendaraan_masuk.css">
 <link rel="stylesheet" href="assets/CSS/style.css" type="text/css">
 
@@ -36,23 +41,23 @@ $eksekusi = edit_kendaraan_masuk();
                     <label for="pengemudi">Nama Pengemudi (Opsional)</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" id="pengemudi" class="pure-input-1" placeholder="Masukkan Nama Pengemudi" value="<?php echo $eksekusi['pengemudi'];?>">
+                        <input type="text" id="pengemudi" class="pure-input-1" name="pengemudi" placeholder="Masukkan Nama Pengemudi" value="<?php echo $eksekusi['pengemudi']; ?>">
                     </div>
                 </div>
                 <div class="input-group">
                     <label for="no_plat">Nomor Plat</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-id-card"></i>
-                        <input type="text" class="pure-input-1" id="no_plat" placeholder="Masukkan Nomor Plat Kendaraan" value="<?php echo $eksekusi['no_plat'];?>">
+                        <input type="text" class="pure-input-1" id="no_plat" name="no_plat" placeholder="Masukkan Nomor Plat Kendaraan" value="<?php echo $eksekusi['no_plat']; ?>">
                     </div>
                 </div>
                 <div class="input-group">
                     <label for="jenis_kendaraan">Jenis Kendaraan</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-car-side"></i>
-                        <select name="" id="jenis_kendaraan" class="pure-input-1">
-                        <?php foreach (getKendaraan() as $row): ?>
-                            <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == ($eksekusi['id_kendaraan'] ?? '')) ? 'selected' : ''; ?>>
+                        <select name="jenis_kendaraan" id="jenis_kendaraan" class="pure-input-1">
+                            <?php foreach (getKendaraan() as $row): ?>
+                                <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == ($eksekusi['id_kendaraan'] ?? '')) ? 'selected' : ''; ?>>
                                     <?php echo $row['jenis_kendaraan']; ?>
                                 </option>
                             <?php endforeach; ?>
@@ -60,7 +65,7 @@ $eksekusi = edit_kendaraan_masuk();
                     </div>
                 </div>
                 <div class="input-group">
-                    <input type="submit" class="pure-button button-success" name="" value="Edit">
+                    <input type="submit" class="pure-button button-success" value="Edit">
                 </div>
             </form>
         </div>

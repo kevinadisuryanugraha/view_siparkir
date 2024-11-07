@@ -17,27 +17,43 @@ function tambah_kendaraan_masuk()
 }
 
 // fungsi mengambil data untuk edit kendaraan masuk
+function edit_kendaraan_parkir_masuk()
+{
+    global $db;
+    $transaksi_kendaraan = $_GET['id'];  // Ambil ID kendaraan dari URL
+    $sql_ambil_edit = "SELECT siparkir_transaksi.*, siparkir_kendaraan.jenis_kendaraan
+            FROM siparkir_transaksi
+            LEFT JOIN siparkir_kendaraan 
+            ON siparkir_transaksi.id_kendaraan = siparkir_kendaraan.id 
+            WHERE siparkir_transaksi.id = '$transaksi_kendaraan'";  // Kondisi WHERE berdasarkan ID
+    $eksekusi = $db->query($sql_ambil_edit);
+    return $eksekusi->fetch_assoc();
+}
+
+
 function edit_kendaraan_masuk()
 {
     global $db;
-    $transaksi_kendaraan = $_GET['id'];
-    $sql_ambil_edit = "SELECT * FROM siparkir_transaksi WHERE id='$transaksi_kendaraan'";
-    $eksekusi = $db->query($sql_ambil_edit);
-    return $eksekusi->fetch_assoc();
+    
+    $transaksi_kendaraan = $_GET['id'];  // Ambil ID kendaraan dari URL
+    $plat = $_POST['no_plat'];           // Ambil data dari form
+    $pengemudi = $_POST['pengemudi'];    // Ambil data pengemudi
+    $jenis_kendaraan = $_POST['jenis_kendaraan'];    // Ambil data pengemudi
 
-    $plat           = $_POST['no_plat'];
-    $pengemudi      = $_POST['pengemudi'];
-    $jenis_vehicle  = $_POST['id_kendaraan'];
-
-    $sql_update_kendaraan_masuk =
+    // Perbaiki query update
+    $sql_update_kendaraan_masuk = 
         "UPDATE siparkir_transaksi 
-                        SET no_plat ='$plat, 
-                        pengemudi='$pengemudi, 
-                        id_kendaraan='$jenis_vehicle'
-                        WHERE id='$transaksi_kendaraan'";
+        SET no_plat = '$plat', 
+            pengemudi = '$pengemudi' ,
+            id_kendaraan = '$jenis_kendaraan'
+        WHERE id = '$transaksi_kendaraan'";  // Pastikan kondisi WHERE mengacu pada ID
+
     $eksekusi = $db->query($sql_update_kendaraan_masuk);
-    return $eksekusi;
+    
+    return $eksekusi;  // Kembalikan hasil eksekusi query (true/false)
 }
+
+
 
 // fungsi  hapus kendaraan masuk
 function delete_kendaraan_masuk()
