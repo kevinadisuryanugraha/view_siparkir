@@ -3,17 +3,15 @@
 <?php include 'sidebar.php'; ?>
 
 <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-
-        if(tambah_kendaraan_masuk())
-        {
-            echo "<script>
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    var_dump($_POST);
+    if (tambah_kendaraan_masuk()) {
+        echo "<script>
             alert('Berhasil Tambah Kendaraan');
             window.location = 'kendaraan_masuk.php';
             </script>";
-        }
     }
+}
 ?>
 <link rel="stylesheet" href="assets/CSS/tambah_kendaraan_masuk.css">
 <link rel="stylesheet" href="assets/CSS/style.css" type="text/css">
@@ -33,7 +31,7 @@
             </a>
         </header>
         <div class="form-container">
-            <form action="kendaraan_masuk" class="pure-form pure-form-stacked" method="post">
+            <form action="tambah_kendaraan_masuk.php" class="pure-form pure-form-stacked" method="post">
                 <div class="input-group">
                     <label for="pengemudi">Nama Pengemudi (Opsional)</label>
                     <div class="input-icon">
@@ -54,16 +52,15 @@
                         <i class="fa-solid fa-car-side"></i>
                         <select id="jenis_kendaraan" name="jenis_kendaraan" class="pure-input-1">
                             <option value="">-- Pilih Jenis Kendaraan --</option>
-                            <?php foreach(ambil_data_kendaraan_masuk() as $row): ?>
-                                <option value="<?php echo $row['jenis_kendaraan']; ?>"><?php echo $row['jenis_kendaraan']; ?></option>
+                            <?php foreach (getKendaraan() as $row): ?>
+                                <option value="<?php echo $row['id']; ?>"><?php echo $row['jenis_kendaraan']; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
                 <div class="input-group">
-                    <input type="submit" class="pure-button button-success" name="" value="Simpan">
+                    <input type="submit" class="pure-button button-success" name="submit" value="Simpan">
                 </div>
-             
             </form>
         </div>
     </div>
