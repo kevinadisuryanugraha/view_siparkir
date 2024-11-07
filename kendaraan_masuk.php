@@ -50,7 +50,7 @@
                     <td class="button">
                         <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
                         <button class="btn btn-warning" onclick="window.location.href='edit_kendaraan_masuk.php?id=<?php echo $row['id'];?>'"><i class="fa-solid fa-gear"></i></i></button>
-                        <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        <button class="btn btn-danger" onclick="window.location.href='hapus_kendaraan_masuk.php?id<?php echo $row['id'];?>'"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
                 </tr>
             <?php 

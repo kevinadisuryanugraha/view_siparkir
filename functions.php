@@ -59,8 +59,22 @@ function edit_kendaraan_masuk()
 function delete_kendaraan_masuk()
 {
     global $db;
-    $transaksi_kendaraan = $_GET['id'];
-    $sql_delete_kendaraan_masuk = "DELETE FROM siparkir_transaksi WHERE id='$transaksi_kendaraan'";
+    $transaksi_kendaraan = isset($_GET['id']) ? intval($_GET['id']) : 0;
+    if($transaksi_kendaraan > 0)
+    {
+        $sql_delete_kendaraan_masuk = "DELETE 
+                                    FROM siparkir_transaksi 
+                                    WHERE id = ?";
+
+        $stmt = $db->prepare($sql_delete_kendaraan_masuk);
+        $stmt->bind_param("i", $transaksi_kendaraan);
+
+        $eksekusi = $stmt->execute();
+
+        return $eksekusi;
+    }
+    $sql_delete_kendaraan_masuk = "DELETE FROM siparkir_transaksi 
+                                WHERE id='?'";
     $eksekusi = $db->query($sql_delete_kendaraan_masuk);
     return $eksekusi;
 }
