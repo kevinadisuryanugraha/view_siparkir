@@ -1,7 +1,8 @@
-<?php include 'header.php'; ?>
-    <?php include 'sidebar.php'; ?>
-    <?php
-    $startDate = isset($_GET['startDate']) ? $_GET['startDate'] : null;
+<?php 
+include 'header.php';
+include 'sidebar.php';
+
+$startDate = isset($_GET['startDate']) ? $_GET['startDate'] : null;
 $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
 
 $dataLaporan = [];
@@ -24,7 +25,7 @@ if ($startDate && $endDate) {
 
         <!-- ruang kreasi developer -->
         <div class="container">
-            <h1>LAPORAN PEMASUKAN <span class="sub-title">Data Laporan Pemasukan</span></h1>
+            <h1>Laporan Pemasukan Parkir</h1>
             
             <!-- Filter Laporan -->
             <div class="filter-box">
