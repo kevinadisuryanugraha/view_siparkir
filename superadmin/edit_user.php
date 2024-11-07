@@ -84,32 +84,32 @@
 
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link rel="stylesheet" href="assets/CSS/edit_user.css">
-<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../assets/CSS/edit_user.css">
+<link href="../assets/CSS/style.css" rel="stylesheet" type="text/css">
 
 
 
 <div class="main-content">
     <header>
         <h2>Dashboard <span>Control Panel</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-    </header>    
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+    </header>
 
     <!-- ruang kreasi developer -->
     <div class="container">
         <h2>Edit Pengguna</h2>
-        
+
         <form action="edit_user.php?id=<?php echo $user['id']; ?>" method="POST">
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="nama" value="<?php echo htmlspecialchars($user['nama']); ?>" required>
             </div>
-            
+
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
             </div>
-            
+
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" name="password" required>
@@ -128,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="form-buttons">
                 <button type="submit">Save Changes</button>
                 <a href="halaman_profil.php" class="cancel-button">Cancel</a>

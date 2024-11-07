@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $eksekusi = edit_kendaraan_parkir_masuk();  // Ambil data kendaraan yang akan diedit
 ?>
 
-<link rel="stylesheet" href="assets/CSS/edit_kendaraan_masuk.css">
-<link rel="stylesheet" href="assets/CSS/style.css" type="text/css">
+<link rel="stylesheet" href="../assets/CSS/edit_kendaraan_masuk.css">
+<link rel="stylesheet" href="../assets/CSS/style.css" type="text/css">
 
 <div class="main-content">
     <header>
         <h2>Dashboard <span>Control Panel</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
     <!-- START KREASI DEVELOPMENT -->
     <h1>Kendaraan Masuk</h1>
