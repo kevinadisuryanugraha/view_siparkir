@@ -18,6 +18,7 @@
     text-align: center;
     margin-bottom: 20px;
     font-weight: bold;
+    color: #ffffff;
 }
 
 .profile {
@@ -72,6 +73,6 @@
         <a href="laporan_parkir.php"><i class="fas fa-file-alt"></i> Laporan Parkir</a>
         <a href="kendaraan_keluar.php"><i class="fas fa-car"></i> Kendaraan Keluar</a>
         <a href="ganti_password.php"><i class="fas fa-key"></i> Ganti Password</a>
-        <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="login.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </nav>
 </aside>
