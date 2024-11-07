@@ -1,5 +1,6 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
+
 <link rel="stylesheet" href="assets/CSS/siparkir_kendaraan_masuk.css">
 <link rel="stylesheet" href="assets/CSS/style.css">
 
@@ -50,7 +51,8 @@
                     <td class="button">
                         <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
                         <button class="btn btn-warning" onclick="window.location.href='edit_kendaraan_masuk.php?id=<?php echo $row['id'];?>'"><i class="fa-solid fa-gear"></i></i></button>
-                        <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        <a href="hapus_kendaraan.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin hapus kendaraan ini?')"><i class="fa-solid fa-trash-can"></i></a>
+
                     </td>
                 </tr>
             <?php 

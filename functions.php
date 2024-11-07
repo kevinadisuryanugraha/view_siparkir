@@ -88,33 +88,9 @@ function hapusKendaraan($id)
 function batalKeluar($id)
 {
     global $db;
-    $sql = "UPDATE siparkir_transaksi SET waktu_keluar = NULL WHERE id = $id";
+    $sql = "UPDATE siparkir_transaksi SET waktu_keluar = '' WHERE id = $id";
     $db->query($sql);
     $db->close();
-}
-
-// Fungsi untuk menampilkan data kendaraan keluar
-function getDataKendaraan()
-{
-    global $db;
-    $result = $db->query("SELECT * FROM siparkir_transaksi ORDER BY id ASC");
-    $data = [];
-    while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
-    }
-    $db->close();
-    return $data;
-}
-
-// Fungsi untuk mendapatkan path PDF
-function getPDFPath($id)
-{
-    global $db;
-    $sql = "SELECT file_pdf FROM siparkir_transaksi WHERE id = $id";
-    $result = $db->query($sql);
-    $filePDF = $result->fetch_assoc()['file_pdf'];
-    $db->close();
-    return $filePDF;
 }
 
 function get_all_users()
