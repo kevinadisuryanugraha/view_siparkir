@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $id_parkir) {
         durasi = '$durasi', 
         biaya = '$biaya' 
         WHERE id = '$id_parkir'";
-        
+
     $eksekusi_fungsi_keluar_parkir = $db->query($sql_fungsi_keluar_parkir);
 
     if ($eksekusi_fungsi_keluar_parkir) {
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $id_parkir) {
             window.location = 'kendaraan_keluar.php';
         </script>";
     } else {
-    echo "<script>
+        echo "<script>
         alert('Gagal Keluar');
         window.location = 'tambah_kendaraan_keluar.php?id=$id_parkir';
     </script>";
@@ -46,13 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $id_parkir) {
 $data_kendaraan = ambil_data_kendaraan_keluar($id_parkir);
 ?>
 
-<link rel="stylesheet" href="assets/CSS/tambah_kendaraan_masuk.css">
-<link rel="stylesheet" href="assets/CSS/style.css" type="text/css">
+<link rel="stylesheet" href="../assets/CSS/tambah_kendaraan_masuk.css">
+<link rel="stylesheet" href="../assets/CSS/style.css" type="text/css">
 
 <div class="main-content">
     <header>
         <h2>Dashboard <span>Control Panel</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
     <div class="container">

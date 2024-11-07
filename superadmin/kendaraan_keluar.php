@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link rel="stylesheet" href="assets/CSS/siparkir_kendaraan_keluar.css?v=1.1">
+<link rel="stylesheet" href="../assets/CSS/siparkir_kendaraan_keluar.css?v=1.1">
 <style>
     /* General Reset */
     * {
@@ -156,7 +156,7 @@
 <div class="main-content">
     <header>
         <h2>Dashboard <span>Control Panel</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
     <!-- ruang kreasi developer -->
@@ -179,32 +179,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php
+                    <?php
                     $no = 1;
-                    foreach(tampil_data_kendaraan_keluar() as $row):
-                ?>
-                <tr>
-                    <td><?php echo $no;?></td>
-                    <td><?php echo $row['no_plat'];?></td>
-                    <td><?php echo $row['pengemudi'];?></td>
-                    <td><?php echo $row['jenis_kendaraan'];?></td>
-                    <td><?php echo $row['waktu_masuk'];?></td>
-                    <td><?php echo $row['waktu_keluar'];?></td>
-                    <td><?php
-                        $waktu_masuk = $row['waktu_masuk'];
-                        $waktu_keluar = $row['waktu_keluar'];
+                    foreach (tampil_data_kendaraan_keluar() as $row):
+                    ?>
+                        <tr>
+                            <td><?php echo $no; ?></td>
+                            <td><?php echo $row['no_plat']; ?></td>
+                            <td><?php echo $row['pengemudi']; ?></td>
+                            <td><?php echo $row['jenis_kendaraan']; ?></td>
+                            <td><?php echo date('d-m-Y H:i:s',strtotime($row['waktu_masuk'])); ?></td>
+                            <td><?php echo date('d-m-Y H:i:s',strtotime($row['waktu_keluar'])); ?></td>
+                            <td><?php
+                                $waktu_masuk = $row['waktu_masuk'];
+                                $waktu_keluar = $row['waktu_keluar'];
 
-                        $durasi = strtotime($waktu_keluar) - strtotime($waktu_masuk);
+                                $durasi = strtotime($waktu_keluar) - strtotime($waktu_masuk);
 
-                        echo floor($durasi /3600) . 'jam'.floor($durasi / 60 % 60). 'menit' .$durasi % 60 .'detik'; 
-                    ?></td>
-                    <td>Rp.<?php 
-                    $jam = floor($durasi / 3600);
-                    echo number_format($jam*$row['biaya'],0,",",".");?></td>
-                    </tr>
-                    <?php 
+                                echo floor($durasi / 3600) . 'jam' . floor($durasi / 60 % 60) . 'menit' . $durasi % 60 . 'detik';
+                                ?></td>
+                            <td>Rp.<?php
+                                    $jam = floor($durasi / 3600);
+                                    echo number_format($jam * $row['biaya'], 0, ",", "."); ?></td>
+                        </tr>
+                    <?php
                         $no++;
-                        endforeach;
+                    endforeach;
                     ?>
                 </tbody>
             </table>
@@ -213,8 +213,8 @@
     <!-- end kreasi development section -->
 </div>
 
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/js/DataTables/datatables.min.js"></script>
+<script src="../assets/js/jquery-3.7.1.min.js"></script>
+<script src="../assets/js/DataTables/datatables.min.js"></script>
 
 <script>
     $(document).ready(function() {

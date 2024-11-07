@@ -1,5 +1,5 @@
 <?php
-require_once 'config/config.php';
+require_once '../config/config.php';
 
 // fungsi tambah kendaraan masuk
 function tambah_kendaraan_masuk()
@@ -34,14 +34,14 @@ function edit_kendaraan_parkir_masuk()
 function edit_kendaraan_masuk()
 {
     global $db;
-    
+
     $transaksi_kendaraan = $_GET['id'];  // Ambil ID kendaraan dari URL
     $plat = $_POST['no_plat'];           // Ambil data dari form
     $pengemudi = $_POST['pengemudi'];    // Ambil data pengemudi
     $jenis_kendaraan = $_POST['jenis_kendaraan'];    // Ambil data pengemudi
 
     // Perbaiki query update
-    $sql_update_kendaraan_masuk = 
+    $sql_update_kendaraan_masuk =
         "UPDATE siparkir_transaksi 
         SET no_plat = '$plat', 
             pengemudi = '$pengemudi' ,
@@ -49,7 +49,7 @@ function edit_kendaraan_masuk()
         WHERE id = '$transaksi_kendaraan'";  // Pastikan kondisi WHERE mengacu pada ID
 
     $eksekusi = $db->query($sql_update_kendaraan_masuk);
-    
+
     return $eksekusi;  // Kembalikan hasil eksekusi query (true/false)
 }
 
@@ -217,9 +217,8 @@ function tampil_data_kendaraan_keluar()
     $eksekusi = $db->query($sql_tampil_data_transaksi);
     $result = array();
 
-    while($row = $eksekusi->fetch_assoc())
-    {
-        $result[]=$row;
+    while ($row = $eksekusi->fetch_assoc()) {
+        $result[] = $row;
     }
 
     return $result;
@@ -334,4 +333,98 @@ function getLaporanPemasukan($startDate, $endDate)
     }
 
     return ['data' => $results, 'total' => $totalPemasukan];
+}
+
+function add_user()
+{
+    global $db;
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $nama = $_POST['nama'];
+        $email = $_POST['email'];   
+        $no_wa = $_POST['no_wa'];
+        $password = md5($_POST['password']);
+        $level_user = $_POST['level_user'];
+        // Validasi level_user agar hanya "superadmin" atau "admin"
+        $valid_levels = ['superadmin', 'admin'];
+        if (!in_array($level_user, $valid_levels)) {
+            echo "Level user tidak valid.";
+            return false;
+        }
+    
+    
+        // Query untuk menambah pengguna
+        $sql = "INSERT INTO siparkir_user (nama, email, no_wa, password, level_user) VALUES ('$nama', '$email', '$no_wa', '$password', '$level_user')";
+        $result = $db->query($sql);
+    
+        if($result) {
+            header('Location: halaman_profil.php');
+            exit;
+        }
+    }
+}
+
+function get_user_by_id()
+{
+    global $db;
+
+    if (isset($_GET['id'])) {
+        $get_id = (int)$_GET['id']; // Meng-cast ID menjadi integer untuk keamanan
+
+        $sql = "SELECT * FROM siparkir_user WHERE id = $get_id";
+        $eksekusi = $db->query($sql);
+
+        if ($eksekusi && $eksekusi->num_rows > 0) {
+            return $eksekusi->fetch_assoc();
+        }
+    }
+    return null; // Mengembalikan null jika pengguna tidak ditemukan
+}
+function edit_user()
+{
+    global $db;
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id = $_GET['id'];
+        $nama = $_POST['nama'];
+        $email = $_POST['email'];
+        $no_wa = $_POST['no_wa'];
+        $password = $_POST['password'];
+        $level_user = $_POST['level_user'];
+
+        // Validasi level user
+        if ($level_user !== 'superadmin' && $level_user !== 'admin') {
+            echo "Level user tidak valid.";
+            return false;
+        }
+
+        if (!empty($password)) {
+            // Jika password baru diisi, hash password dengan md5 dan update
+            $hashed_password = md5($password);
+            $sql = "UPDATE siparkir_user SET nama = '$nama', email = '$email', no_wa = '$no_wa', password = '$hashed_password', level_user = '$level_user' WHERE id = $id";
+        } else {
+            // Jika password tidak diisi, update tanpa mengubah password
+            $sql = "UPDATE siparkir_user SET nama = '$nama', email = '$email', no_wa = '$no_wa', level_user = '$level_user' WHERE id = $id";
+        }
+
+        return $db->query($sql) ? true : false;
+    }
+}
+
+
+
+function delete_user()
+{
+    global $db;
+
+    if (isset($_GET['id'])) {
+        $get_id = $_GET['id'];
+        // Query untuk menghapus pengguna
+        $sql = "DELETE FROM siparkir_user WHERE id = '$get_id'";
+        $eksekusi = $db->query($sql);
+
+        if ($eksekusi) {
+            header('Location: halaman_profil.php');
+        }
+    }
 }

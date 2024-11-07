@@ -1,134 +1,83 @@
-<?php
-// index.php
-// define('DB_HOST', 'localhost');  // Ganti dengan host database jika diperlukan
-// define('DB_USER', 'root');       // Ganti dengan username database Anda
-// define('DB_PASS', '');           // Ganti dengan password database Anda
-// define('DB_NAME', 'db_siparkir'); // Ganti dengan nama database Anda
+<?php 
+include 'header.php';
+include 'sidebar.php';
 
-// // Fungsi untuk membuka koneksi database
-// function db_connect() {
-//     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+// Ambil ID dari parameter URL
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$user = get_user_by_id($id);
 
-//     // Cek apakah ada error pada koneksi
-//     if ($conn->connect_error) {
-//         die("Connection failed: " . $conn->connect_error);
-//     }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Ambil data dari form
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
+    $no_wa = $_POST['no_wa'];
+    $password = $_POST['password'];
+    $level_user = $_POST['level_user'];
 
-//     return $conn;
-// }
-
-
-// // Fungsi untuk menutup koneksi database
-// function db_close($conn) {
-//     $conn->close();
-// }
-
-
-// function get_user_by_id($id) {
-//     $conn = db_connect();  // Koneksi ke database
-//     $sql = "SELECT * FROM siparkir_user WHERE id = $id"; // Menggunakan $id langsung dalam query
-
-//     $result = $conn->query($sql);
-//     $user = $result->fetch_assoc();
-
-//     db_close($conn);  // Menutup koneksi database
-
-//     return $user;
-// }
-
-
-
-// $id = $_GET['id']; // Ambil ID dari URL
-// $user = get_user_by_id($id); // Ambil data pengguna berdasarkan ID
-
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     // Ambil data dari form
-//     $nama = $_POST['nama'];
-//     $email = $_POST['email'];
-//     $password = $_POST['password'];
-//     $level_user = $_POST['level_user'];
-
-//     // Edit pengguna
-//     $result = edit_user($id, $nama, $email, $password, $level_user);
-
-//     if ($result) {
-//         header("Location: index.php");  // Redirect ke halaman daftar pengguna
-//     } else {
-//         echo "Gagal mengupdate pengguna.";
-//     }
-// }
-
-
-// function edit_user($id, $nama, $email, $password, $level_user) {
-//     $conn = db_connect();  // Koneksi ke database
-
-//     // Jika password diubah, hash password terlebih dahulu
-//     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-//     // Query dengan concatenation (perhatikan potensi SQL Injection)
-//     $sql = "UPDATE siparkir_user SET 
-//                 nama = '$nama', 
-//                 email = '$email', 
-//                 password = '$hashed_password', 
-//                 level_user = '$level_user' 
-//             WHERE id = $id";
-
-//     // Eksekusi query
-//     $success = $conn->query($sql);
-//     db_close($conn);  // Menutup koneksi database
-
-//     return $success;
-// }
-
+    // Update data pengguna
+    if (edit_user($id, $nama, $email, $no_wa, $password, $level_user)) {
+        echo "<script>
+        alert('Data Berhasil Di ubah');
+        window.location = 'halaman_profil.php';
+        </script>";
+    } else {
+        echo "<script>
+        alert('Data Gagal Di ubah');
+        window.location = 'edit_user.php';
+        </script>";
+    }
+}
 ?>
 
-<?php include 'header.php'; ?>
-<?php include 'sidebar.php'; ?>
-<link rel="stylesheet" href="assets/CSS/edit_user.css">
-<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
-
-
+<link rel="stylesheet" href="../assets/CSS/edit_user.css">
+<link href="../assets/CSS/style.css" rel="stylesheet" type="text/css">
 
 <div class="main-content">
     <header>
         <h2>Dashboard <span>Control Panel</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-    </header>    
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+    </header>
 
     <!-- ruang kreasi developer -->
     <div class="container">
         <h2>Edit Pengguna</h2>
-        
+
         <form action="edit_user.php?id=<?php echo $user['id']; ?>" method="POST">
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="nama" value="<?php echo htmlspecialchars($user['nama']); ?>" required>
             </div>
-            
+
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
             </div>
-            
+
+            <div class="form-group">
+                <label>Nomor Whatsapp</label>
+                <input type="number" name="no_wa" value="<?php echo htmlspecialchars($user['no_wa']); ?>" required>
+            </div>
+
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" required>
+                <input type="password" name="password">
+                <small>Kosongkan jika tidak ingin mengubah password</small>
             </div>
 
             <div class="form-group">
                 <label>User Level</label>
                 <div class="radio-group">
                     <div class="radio-option">
-                        <input type="radio" name="level_user" value="administrator" <?php echo ($user['level_user'] == 'administrator') ? 'checked' : ''; ?> required>
-                        <label for="admin">Administrator</label>
+                        <input type="radio" name="level_user" value="superadmin" <?php echo ($user['level_user'] == 'superadmin') ? 'checked' : ''; ?> required>
+                        <label for="superadmin">superadmin</label>
                     </div>
                     <div class="radio-option">
-                        <input type="radio" name="level_user" value="operator" <?php echo ($user['level_user'] == 'operator') ? 'checked' : ''; ?> required>
-                        <label for="operator">Operator</label>
+                        <input type="radio" name="level_user" value="admin" <?php echo ($user['level_user'] == 'admin') ? 'checked' : ''; ?> required>
+                        <label for="admin">admin</label>
                     </div>
                 </div>
             </div>
-            
+
             <div class="form-buttons">
                 <button type="submit">Save Changes</button>
                 <a href="halaman_profil.php" class="cancel-button">Cancel</a>

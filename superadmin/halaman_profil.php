@@ -1,9 +1,9 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link rel="stylesheet" href="assets/CSS/halaman_profil.css">
+<link rel="stylesheet" href="../assets/CSS/halaman_profil.css">
 <style>
-            /* General Reset */
-            * {
+    /* General Reset */
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -52,36 +52,45 @@
         background-color: #1b5e20;
         padding: 10px 15px;
         border-radius: 5px;
-        transition: background-color 0.3s ease, transform 0.2s ease; /* Menambahkan efek transisi */
-        font-weight: bold; /* Menebalkan teks */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        /* Menambahkan efek transisi */
+        font-weight: bold;
+        /* Menebalkan teks */
     }
 
     .logout-btn:hover {
-        background-color: #1b9e40; /* Mengubah warna saat hover */
-        transform: scale(1.05); /* Sedikit memperbesar tombol saat hover */
+        background-color: #1b9e40;
+        /* Mengubah warna saat hover */
+        transform: scale(1.05);
+        /* Sedikit memperbesar tombol saat hover */
     }
 
     /* Stats Cards */
     .stats-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Tiga kolom */
-        gap: 15px; /* Jarak antar kartu */
+        grid-template-columns: repeat(3, 1fr);
+        /* Tiga kolom */
+        gap: 15px;
+        /* Jarak antar kartu */
         margin-bottom: 20px;
     }
 
     .card {
-        background-color: #e3f2fd; /* Warna latar belakang untuk kartu */
+        background-color: #e3f2fd;
+        /* Warna latar belakang untuk kartu */
         padding: 20px;
         border-radius: 8px;
         position: relative;
         color: #333;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease; /* Transisi saat hover */
+        transition: transform 0.2s ease;
+        /* Transisi saat hover */
     }
 
     .card:hover {
-        transform: scale(1.05); /* Memperbesar kartu saat hover */
+        transform: scale(1.05);
+        /* Memperbesar kartu saat hover */
     }
 
     .card h3 {
@@ -101,9 +110,17 @@
     }
 
     /* Color Variants */
-    .green { background-color: #c8e6c9; }
-    .orange { background-color: #ffe0b2; }
-    .blue { background-color: #bbdefb; }
+    .green {
+        background-color: #c8e6c9;
+    }
+
+    .orange {
+        background-color: #ffe0b2;
+    }
+
+    .blue {
+        background-color: #bbdefb;
+    }
 
     /* Charts */
     .charts-grid {
@@ -138,16 +155,16 @@
 <div class="main-content">
     <header>
         <h2>Halaman Profil<span>Control Panel</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-    </header>    
-    
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+    </header>
+
     <!-- ruang kreasi developer -->
     <div class="card-profil">
         <div class="card-profil-header">
             <a href="add_user.php" class="pure-button-primary pure-button">Tambah Profil</a>
         </div>
         <div class="card-profil-content">
-            <table id="profil" class="cell-border" >
+            <table id="profil" class="cell-border">
                 <thead>
                     <tr>
                         <th>NO</th>
@@ -159,29 +176,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no=1; foreach (get_all_users() as $row): ?>
-                    <tr>
-                        <td><?php echo $no;?></td>
-                        <td><?php echo $row['nama'];?></td>
-                        <td><?php echo $row['email'];?></td>
-                        <td><?php echo $row['no_wa'];?></td>
-                        <td><?php echo $row['level_user'];?></td>
-                        <td><a href="edit_user.php?id=<?php echo $row['id']; ?>" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash icon-color"></i></a></td>
-                    </tr>
-                    <?php $no++; endforeach?>
+                    <?php $no = 1;
+                    foreach (get_all_users() as $row): ?>
+                        <tr>
+                            <td><?php echo $no; ?></td>
+                            <td><?php echo $row['nama']; ?></td>
+                            <td><?php echo $row['email']; ?></td>
+                            <td><?php echo $row['no_wa']; ?></td>
+                            <td><?php echo $row['level_user']; ?></td>
+                            <td><a href="edit_user.php?id=<?php echo $row['id']; ?>" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash icon-color"></i></a></td>
+                        </tr>
+                    <?php $no++;
+                    endforeach ?>
                 </tbody>
             </table>
         </div>
     </div>
- <!-- end kreasi development section -->
+    <!-- end kreasi development section -->
 </div>
 
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/js/DataTables/datatables.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            
-             $('#profil').DataTable()
-        })
-    </script>
+<script src="../assets/js/jquery-3.7.1.min.js"></script>
+<script src="../assets/js/DataTables/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $('#profil').DataTable()
+    })
+</script>
 <?php include 'footer.php'; ?>

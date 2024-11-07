@@ -3,10 +3,14 @@ body {
     background-color: #f3f3f3;
     display: flex;
     background-size: cover;
-    background-image: url('assets/images/bg-parking.jpeg'); /* Ganti dengan URL gambar kamu */
-    background-size: cover; /* Menyesuaikan ukuran gambar agar menutupi seluruh area */
-    background-repeat: no-repeat; /* Mencegah gambar diulang */
-    background-position: center; /* Memusatkan gambar */
+    background-image: url('../images/bg-parking.jpeg');
+    /* Ganti dengan URL gambar kamu */
+    background-size: cover;
+    /* Menyesuaikan ukuran gambar agar menutupi seluruh area */
+    background-repeat: no-repeat;
+    /* Mencegah gambar diulang */
+    background-position: center;
+    /* Memusatkan gambar */
     justify-content: center;
     align-items: center;
     height: 100vh;

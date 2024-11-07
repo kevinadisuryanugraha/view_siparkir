@@ -1,17 +1,17 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<?php 
+<?php
 $vehicle = get_kendaraan_by_id();
 update_kendaraan();
 ?>
-<link href="assets/CSS/edit_jenis_kendaraan.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="assets/CSS/style.css">
+<link href="../assets/CSS/edit_jenis_kendaraan.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../assets/CSS/style.css">
 
 <div class="main-content">
     <header>
         <h2>Edit <span>Jenis kendaraan</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-    </header>    
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+    </header>
 
     <!-- ruang kreasi developer -->
     <div class="container">
@@ -40,4 +40,3 @@ update_kendaraan();
 </div>
 
 <?php include 'footer.php'; ?>
-  

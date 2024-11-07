@@ -1,5 +1,4 @@
-<?php include 'header.php';
-?>
+<?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
 
 <?php
@@ -12,13 +11,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-<link rel="stylesheet" href="assets/CSS/tambah_kendaraan_masuk.css">
-<link rel="stylesheet" href="assets/CSS/style.css" type="text/css">
+<link rel="stylesheet" href="../assets/CSS/tambah_kendaraan_masuk.css">
+<link rel="stylesheet" href="../assets/CSS/style.css" type="text/css">
 
 <div class="main-content">
     <header>
         <h2>Dashboard <span>Control Panel</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
     <h1>Kendaraan Masuk</h1>
