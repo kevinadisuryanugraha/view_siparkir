@@ -1,5 +1,18 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+?>
 <?php include 'sidebar.php'; ?>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    var_dump($_POST);
+    if (tambah_kendaraan_masuk()) {
+        echo "<script>
+            alert('Berhasil Tambah Kendaraan');
+            window.location = 'kendaraan_masuk.php';
+            </script>";
+    }
+}
+?>
 <link rel="stylesheet" href="assets/CSS/tambah_kendaraan_masuk.css">
 <link rel="stylesheet" href="assets/CSS/style.css" type="text/css">
 
@@ -18,42 +31,35 @@
             </a>
         </header>
         <div class="form-container">
-            <form action="" class="pure-form pure-form-stacked">
+            <form action="tambah_kendaraan_masuk.php" class="pure-form pure-form-stacked" method="post">
                 <div class="input-group">
                     <label for="pengemudi">Nama Pengemudi (Opsional)</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" id="pengemudi" class="pure-input-1" placeholder="Masukkan Nama Pengemudi" autofocus>
+                        <input type="text" id="pengemudi" name="pengemudi" class="pure-input-1" placeholder="Masukkan Nama Pengemudi" autofocus>
                     </div>
                 </div>
                 <div class="input-group">
                     <label for="no_plat">Nomor Plat</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-id-card"></i>
-                        <input type="text" class="pure-input-1" id="no_plat" placeholder="Masukkan Nomor Plat Kendaraan">
+                        <input type="text" class="pure-input-1" id="no_plat" name="no_plat" placeholder="Masukkan Nomor Plat Kendaraan">
                     </div>
                 </div>
                 <div class="input-group">
                     <label for="jenis_kendaraan">Jenis Kendaraan</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-car-side"></i>
-                        <select name="" id="jenis_kendaraan" class="pure-input-1">
+                        <select id="jenis_kendaraan" name="jenis_kendaraan" class="pure-input-1">
                             <option value="">-- Pilih Jenis Kendaraan --</option>
-                            <option value="">SUV</option>
-                            <option value="">Motor Gede</option>
-                            <option value="">Sport</option>
+                            <?php foreach (getKendaraan() as $row): ?>
+                                <option value="<?php echo $row['id']; ?>"><?php echo $row['jenis_kendaraan']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
                 <div class="input-group">
-                    <label for="waktu_masuk">Waktu Masuk (waktu realtime saat form disubmit)</label>
-                    <div class="input-icon">
-                        <i class="fa-solid fa-clock"></i>
-                        <input type="datetime-local" class="pure-input-1" name="waktu_masuk" id="waktu_masuk" placeholder="Waktu Masuk Kendaraan">
-                    </div>
-                </div>
-                <div class="input-group">
-                    <input type="submit" class="pure-button button-success" name="" value="Simpan">
+                    <input type="submit" class="pure-button button-success" name="submit" value="Simpan">
                 </div>
             </form>
         </div>

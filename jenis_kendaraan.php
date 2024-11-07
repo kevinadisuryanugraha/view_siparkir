@@ -1,154 +1,24 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link href="../view_siparkir/assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
-<style>
-            /* General Reset */
-            * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-    }
+<link href="assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
+<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
+<?php 
+$vehicles = get_list_kendaraan();
+delete_kendaraan();
+?>
 
-    /* Main Layout */
-    body {
-        display: flex;
-        min-height: 100vh;
-        background-color: #f4f6f9;
-    }
-
-    .dashboard {
-        display: flex;
-        width: 100%;
-    }
-
-    /* Main Content */
-    .main-content {
-        flex: 1;
-        padding: 20px;
-    }
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    header h2 {
-        font-size: 24px;
-        color: #333;
-    }
-
-    header h2 span {
-        font-size: 16px;
-        color: #666;
-        margin-left: 10px;
-    }
-
-    .logout-btn {
-        text-decoration: none;
-        color: white;
-        background-color: #1b5e20;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease, transform 0.2s ease; /* Menambahkan efek transisi */
-        font-weight: bold; /* Menebalkan teks */
-    }
-
-    .logout-btn:hover {
-        background-color: #1b9e40; /* Mengubah warna saat hover */
-        transform: scale(1.05); /* Sedikit memperbesar tombol saat hover */
-    }
-
-    /* Stats Cards */
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Tiga kolom */
-        gap: 15px; /* Jarak antar kartu */
-        margin-bottom: 20px;
-    }
-
-    .card {
-        background-color: #e3f2fd; /* Warna latar belakang untuk kartu */
-        padding: 20px;
-        border-radius: 8px;
-        position: relative;
-        color: #333;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease; /* Transisi saat hover */
-    }
-
-    .card:hover {
-        transform: scale(1.05); /* Memperbesar kartu saat hover */
-    }
-
-    .card h3 {
-        font-size: 24px;
-        margin-bottom: 5px;
-    }
-
-    .card p {
-        font-size: 14px;
-        color: #555;
-    }
-
-    .card .card-icon {
-        font-size: 36px;
-        color: #777;
-        margin-bottom: 10px;
-    }
-
-    /* Color Variants */
-    .green { background-color: #c8e6c9; }
-    .orange { background-color: #ffe0b2; }
-    .blue { background-color: #bbdefb; }
-
-    /* Charts */
-    .charts-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    .chart {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .chart h3 {
-        font-size: 18px;
-        margin-bottom: 10px;
-        color: #333;
-    }
-
-    .chart-placeholder {
-        height: 200px;
-        background-color: #e0e0e0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #666;
-        font-size: 14px;
-    }
-</style>
-
-    
 <div class="main-content">
     <header>
         <h2>Jenis Kendaraan & Biaya <span>Pengaturan biaya parkir</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
-    </header>    
+    </header>
 
     <!-- ruang kreasi developer -->
     <div class="container">
         <div class="header">
             <h1>Jenis Kendaraan & Biaya</h1>
             <div class="button">
-                <button><a href="tambah_kendaraan.php">+ Tambah</a></button>
+            <a href="tambah_kendaraan.php"><button>+ Tambah</button></a>
                 <button> Cetak PDF</button>
             </div>
         </div>
@@ -163,15 +33,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>truk</td>
-                    <td>Rp.25,000</td>
-                    <td class="button">
-                        <a href="edit_jenis_kendaraan.php" class="btn btn-warning"><i class="fa-solid fa-gear"></i></a >
-                        <a href="" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a >
-                    </td>
-                </tr>
+            <?php if (count($vehicles) > 0) : ?>
+                    <?php $no = 1;
+                    foreach ($vehicles as $vehicle) : ?>
+                        <tr>
+                            <td><?php echo $no; ?></td>
+                            <td><?php echo $vehicle['jenis_kendaraan']; ?></td>
+                            <td>Rp<?php echo number_format($vehicle['biaya_jam']); ?></td>
+                            <td class="button">
+                                <a href="edit_jenis_kendaraan.php?id=<?php echo $vehicle['id']; ?>" class="btn btn-warning"><i class="fa-solid fa-gear"></i></a>
+                                <a href="jenis_kendaraan.php?id=<?php echo $vehicle['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin hapus kendaraan ini?')"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    <?php $no++;
+                    endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
@@ -180,7 +56,7 @@
     <script src="DataTables/datatables.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#Jenis_kendaraan').DataTable({
                 responsive: true,
                 paging: true,
@@ -196,7 +72,7 @@
     <!-- end kreasi development section -->
 </div>
 <?php include 'footer.php'; ?>
-   
+
 </body>
 
 </html>
