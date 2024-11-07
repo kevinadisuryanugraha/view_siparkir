@@ -20,7 +20,7 @@ function tambah_kendaraan_masuk()
 function edit_kendaraan_masuk()
 {
     global $db;
-    $transaksi_kendaraan = $_GET['siparkir_transaksi'];
+    $transaksi_kendaraan = $_GET['id'];
     $sql_ambil_edit = "SELECT * FROM siparkir_transaksi WHERE id='$transaksi_kendaraan'";
     $eksekusi = $db->query($sql_ambil_edit);
     return $eksekusi->fetch_assoc();
@@ -281,6 +281,7 @@ function update_kendaraan()
         }
     }
 }
+
 
 function delete_kendaraan()
 {
