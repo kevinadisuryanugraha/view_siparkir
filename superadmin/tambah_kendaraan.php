@@ -3,12 +3,12 @@
 <?php
 add_kendaraan();
 ?>
-<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="assets/CSS/tambah_jenis_kendaraan.css">
+<link href="../assets/CSS/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../assets/CSS/tambah_jenis_kendaraan.css">
 <div class="main-content">
     <header>
         <h2>Tambah Jenis Kendaraan<span>Control Panel</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
     <!-- ruang kreasi developer -->

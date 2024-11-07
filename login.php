@@ -1,51 +1,46 @@
 <?php
-
+require_once "config/config.php";
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
-    if ($email === $email && $password === $password) {
-        $_SESSION['email'] = $email;
-        echo "<script>
-            alert('Berhasil login, Silahkan Parkirkan Kendaraan anda ditempat yang telah disediakan');
-            window.location='dashboard.php';
-        </script>";
-        exit;
-    } 
-    else
-    {
-        echo "<script>
-            alert('Email atau password salah');
-            window.location='login.php';
-        </script>";
-        exit;
-    }
-}
-
-// fungsi login
-function login_siparkir()
-{
-    global $conn;
-    $email = $_POST['email'];
-    $password = md5($_POST['password']); // pastikan password ter-hash
-
-    // Query login user
     $sql_login_user = "SELECT * FROM siparkir_user WHERE email = '$email' AND password = '$password'";
     $eksekusi_login_user = $db->query($sql_login_user);
 
-    // Jika login berhasil
     if ($eksekusi_login_user->num_rows > 0) {
         $user = $eksekusi_login_user->fetch_assoc();
+
+        // Store session data
         $_SESSION['log-in'] = true;
         $_SESSION['email'] = $user['email'];
-        $_SESSION['id_user'] = $user['id_user'];
-        return $user;
-    }else{
-        return false;
+        $_SESSION['id_user'] = $user['id'];
+        $_SESSION['level_user'] = $user['level_user'];
+
+        // Redirect based on user level
+        if ($user['level_user'] == 'superadmin') {
+            echo "<script>
+                alert('Berhasil login sebagai Superadmin');
+                window.location = './superadmin/dashboard.php';
+            </script>";
+        } elseif ($user['level_user'] == 'admin') {
+            echo "<script>
+                alert('Berhasil login sebagai Admin');
+                window.location = './admin/dashboard.php';
+            </script>";
+        }
+        exit;
+    } else {
+        echo "<script>
+            alert('Email atau password salah');
+            window.location = 'login.php';
+        </script>";
+        exit;
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,30 +50,30 @@ function login_siparkir()
     <title>Login - Siparkir</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/CSS/login.css">
+    <link rel="stylesheet" href="assets/CSS/login.css?v=1.1">
 </head>
 
 <body>
-        <div class="pure-g wrap-card">
-            <div class="pure-u-1 pure-u-md-1-2 card-1">
-                <h1>Selamat Datang di Siparkir</h1>
-                <h4>Silahkan Parkirkan Kendaraan Anda. <br> Aman, Terjamin dan Amanah</h4>
-                <div style="text-align: center;">
-                    <img src="assets/images/parkir.png" alt="Library Image" style="max-width: 50%; margin-top: 10px;">
-                </div>
-                <form class="pure-form pure-form-stacked" action="dashboard.php" method="post">
-                    <label for="email">Masukkan Email</label>
-                    <input type="email" name="email" id="email" required>
-    
-                    <label for="password">Masukkan Password</label>
-                    <input type="password" name="password" id="password" required>
-    
-                    <input type="submit" name="submit" value="Login" class="pure-button pure-button-primary">
-                    <br>
-                </form>
+    <div class="pure-g wrap-card">
+        <div class="pure-u-1 pure-u-md-1-2 card-1">
+            <h1>Selamat Datang di Siparkir</h1>
+            <h4>Silahkan Parkirkan Kendaraan Anda. <br> Aman, Terjamin dan Amanah</h4>
+            <div style="text-align: center;">
+                <img src="assets/images/parkir.png" alt="Library Image" style="max-width: 50%; margin-top: 10px;">
             </div>
+            <form class="pure-form pure-form-stacked" action="" method="post">
+                <label for="email">Masukkan Email</label>
+                <input type="email" name="email" id="email" required>
+
+                <label for="password">Masukkan Password</label>
+                <input type="password" name="password" id="password" required>
+
+                <input type="submit" name="submit" value="Login" class="pure-button pure-button-primary">
+                <br>
+            </form>
         </div>
-        
+    </div>
+
 </body>
 
 </html>

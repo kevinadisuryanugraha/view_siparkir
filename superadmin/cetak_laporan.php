@@ -1,5 +1,5 @@
-<?php 
-require_once 'config/config.php';
+<?php
+require_once '../config/config.php';
 
 // Get start and end date from query parameters
 $startDate = isset($_GET['startDate']) ? $_GET['startDate'] : null;
@@ -9,6 +9,7 @@ $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>CETAK</title>
@@ -27,7 +28,7 @@ $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
 
         table {
             width: 100%;
-            border: solid 2px #DDEEEE; 
+            border: solid 2px #DDEEEE;
             border-collapse: collapse;
             margin-top: 20px;
             background-color: #fff;
@@ -37,8 +38,9 @@ $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
             border: solid 1px #DDEEEE;
         }
 
-        th, td {
-            border: solid 1px #DDEEEE; 
+        th,
+        td {
+            border: solid 1px #DDEEEE;
             padding: 10px;
             text-align: left;
             font-size: 14px;
@@ -58,15 +60,19 @@ $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
             body {
                 padding: 0;
             }
+
             table {
                 border: solid 1px #000;
             }
-            th, td {
-                border: solid 1px #000; 
+
+            th,
+            td {
+                border: solid 1px #000;
             }
         }
     </style>
 </head>
+
 <body>
 
     <center>
@@ -89,8 +95,8 @@ $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
         </thead>
         <tbody>
             <?php
-                // Build query based on date filter
-                $query = "SELECT 
+            // Build query based on date filter
+            $query = "SELECT 
                         t.id AS transaksi_id,
                         t.no_plat, 
                         t.pengemudi, 
@@ -101,35 +107,35 @@ $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
                         t.biaya
                     FROM siparkir_transaksi AS t
                     JOIN siparkir_kendaraan AS k ON t.id_kendaraan = k.id";
-                
-                // Add date range filter if provided
-                if ($startDate && $endDate) {
-                    $query .= " WHERE t.waktu_masuk BETWEEN '$startDate' AND '$endDate'";
-                }
-                
-                $result = $db->query($query);
-                $no = 1;
 
-                // Periksa apakah hasil ada
-                if ($result && $result->num_rows > 0) {
-                    // Fetch data baris per baris
-                    while($row = $result->fetch_assoc()):
+            // Add date range filter if provided
+            if ($startDate && $endDate) {
+                $query .= " WHERE t.waktu_masuk BETWEEN '$startDate' AND '$endDate'";
+            }
+
+            $result = $db->query($query);
+            $no = 1;
+
+            // Periksa apakah hasil ada
+            if ($result && $result->num_rows > 0) {
+                // Fetch data baris per baris
+                while ($row = $result->fetch_assoc()):
             ?>
-            <tr>
-                <td><?php echo $no++; ?></td>
-                <td><?php echo htmlspecialchars($row['no_plat']); ?></td>
-                <td><?php echo htmlspecialchars($row['pengemudi']); ?></td>
-                <td><?php echo htmlspecialchars($row['jenis_kendaraan']); ?></td>
-                <td><?php echo date('d-m-Y H:i:s', strtotime($row['waktu_masuk'])); ?></td>
-                <td><?php echo date('d-m-Y H:i:s', strtotime($row['waktu_keluar'])); ?></td>
-                <td><?php echo htmlspecialchars($row['durasi']); ?></td>
-                <td>Rp <?php echo number_format($row['biaya'], 0, ',', '.'); ?></td>
-            </tr>
-            <?php  
-                    endwhile; 
-                } else {
-                    echo "<tr><td colspan='8'>Tidak ada data yang tersedia.</td></tr>";
-                }
+                    <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo htmlspecialchars($row['no_plat']); ?></td>
+                        <td><?php echo htmlspecialchars($row['pengemudi']); ?></td>
+                        <td><?php echo htmlspecialchars($row['jenis_kendaraan']); ?></td>
+                        <td><?php echo date('d-m-Y H:i:s', strtotime($row['waktu_masuk'])); ?></td>
+                        <td><?php echo date('d-m-Y H:i:s', strtotime($row['waktu_keluar'])); ?></td>
+                        <td><?php echo htmlspecialchars($row['durasi']); ?></td>
+                        <td>Rp <?php echo number_format($row['biaya'], 0, ',', '.'); ?></td>
+                    </tr>
+            <?php
+                endwhile;
+            } else {
+                echo "<tr><td colspan='8'>Tidak ada data yang tersedia.</td></tr>";
+            }
             ?>
         </tbody>
     </table>
@@ -139,4 +145,5 @@ $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
     </script>
 
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 <?php
-require_once 'config/config.php';
+require_once '../config/config.php';
 
 // fungsi tambah kendaraan masuk
 function tambah_kendaraan_masuk()
@@ -34,14 +34,14 @@ function edit_kendaraan_parkir_masuk()
 function edit_kendaraan_masuk()
 {
     global $db;
-    
+
     $transaksi_kendaraan = $_GET['id'];  // Ambil ID kendaraan dari URL
     $plat = $_POST['no_plat'];           // Ambil data dari form
     $pengemudi = $_POST['pengemudi'];    // Ambil data pengemudi
     $jenis_kendaraan = $_POST['jenis_kendaraan'];    // Ambil data pengemudi
 
     // Perbaiki query update
-    $sql_update_kendaraan_masuk = 
+    $sql_update_kendaraan_masuk =
         "UPDATE siparkir_transaksi 
         SET no_plat = '$plat', 
             pengemudi = '$pengemudi' ,
@@ -49,7 +49,7 @@ function edit_kendaraan_masuk()
         WHERE id = '$transaksi_kendaraan'";  // Pastikan kondisi WHERE mengacu pada ID
 
     $eksekusi = $db->query($sql_update_kendaraan_masuk);
-    
+
     return $eksekusi;  // Kembalikan hasil eksekusi query (true/false)
 }
 
@@ -217,9 +217,8 @@ function tampil_data_kendaraan_keluar()
     $eksekusi = $db->query($sql_tampil_data_transaksi);
     $result = array();
 
-    while($row = $eksekusi->fetch_assoc())
-    {
-        $result[]=$row;
+    while ($row = $eksekusi->fetch_assoc()) {
+        $result[] = $row;
     }
 
     return $result;

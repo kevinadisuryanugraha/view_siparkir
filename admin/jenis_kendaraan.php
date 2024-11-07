@@ -1,8 +1,8 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link href="assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
-<link href="assets/CSS/style.css" rel="stylesheet" type="text/css">
-<?php 
+<link href="../assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
+<link href="../assets/CSS/style.css" rel="stylesheet" type="text/css">
+<?php
 $vehicles = get_list_kendaraan();
 delete_kendaraan();
 ?>
@@ -10,7 +10,7 @@ delete_kendaraan();
 <div class="main-content">
     <header>
         <h2>Jenis Kendaraan & Biaya <span>Pengaturan biaya parkir</span></h2>
-        <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
     <!-- ruang kreasi developer -->
@@ -18,7 +18,7 @@ delete_kendaraan();
         <div class="header">
             <h1>Jenis Kendaraan & Biaya</h1>
             <div class="button">
-            <a href="tambah_kendaraan.php"><button>+ Tambah</button></a>
+                <a href="tambah_kendaraan.php"><button>+ Tambah</button></a>
                 <button> Cetak PDF</button>
             </div>
         </div>
@@ -33,7 +33,7 @@ delete_kendaraan();
                 </tr>
             </thead>
             <tbody>
-            <?php if (count($vehicles) > 0) : ?>
+                <?php if (count($vehicles) > 0) : ?>
                     <?php $no = 1;
                     foreach ($vehicles as $vehicle) : ?>
                         <tr>
@@ -53,7 +53,7 @@ delete_kendaraan();
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="DataTables/datatables.min.js"></script>
+    <script src="../assets/js/DataTables/datatables.min.js"></script>
 
     <script>
         $(document).ready(function() {
