@@ -1,87 +1,425 @@
-<?php
-include 'header.php'; 
-include 'sidebar.php';  
-
-if (isset($_GET['action']) && isset($_GET['id'])) {
-    $action = $_GET['action'];
-    $id = (int) $_GET['id'];
-
-    if ($action == 'hapusKendaraan') {
-        hapusKendaraan($id);
-        echo "<script>alert('Data kendaraan berhasil dihapus.');</script>";
-    } elseif ($action == 'batalKeluar') {
-        batalKeluar($id);
-        echo "<script>alert('Batal keluar berhasil.');</script>";
+<?php include 'header.php'; ?>
+<?php include 'sidebar.php'; ?>
+<link rel="stylesheet" href="assets/CSS/siparkir_kendaraan_keluar.css?v=1.1">
+<style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
     }
 
-    echo "<script>window.location.href = 'siparkir_kendaraan_keluar.php';</script>"; // Updated URL
-}
-?>
+    /* Main Layout */
+    body {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f4f6f9;
+    }
 
-<link rel="stylesheet" href="assets/CSS/siparkir_kendaraan_keluar.css">
-<link rel="stylesheet" href="assets/CSS/style.css">
+    .dashboard {
+        display: flex;
+        width: 100%;
+    }
+
+    /* Main Content */
+    .main-content {
+        flex: 1;
+        padding: 20px;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    header h2 {
+        font-size: 24px;
+        color: #333;
+    }
+
+    header h2 span {
+        font-size: 16px;
+        color: #666;
+        margin-left: 10px;
+    }
+
+    .logout-btn {
+        text-decoration: none;
+        color: white;
+        background-color: #1b5e20;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        /* Menambahkan efek transisi */
+        font-weight: bold;
+        /* Menebalkan teks */
+    }
+
+    .logout-btn:hover {
+        background-color: #1b9e40;
+        /* Mengubah warna saat hover */
+        transform: scale(1.05);
+        /* Sedikit memperbesar tombol saat hover */
+    }
+
+    /* Stats Cards */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* Tiga kolom */
+        gap: 15px;
+        /* Jarak antar kartu */
+        margin-bottom: 20px;
+    }
+
+    .card {
+        background-color: #e3f2fd;
+        /* Warna latar belakang untuk kartu */
+        padding: 20px;
+        border-radius: 8px;
+        position: relative;
+        color: #333;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+        /* Transisi saat hover */
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        /* Memperbesar kartu saat hover */
+    }
+
+    .card h3 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .card p {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .card .card-icon {
+        font-size: 36px;
+        color: #777;
+        margin-bottom: 10px;
+    }
+
+    /* Color Variants */
+    .green {
+        background-color: #c8e6c9;
+    }
+
+    .orange {
+        background-color: #ffe0b2;
+    }
+
+    .blue {
+        background-color: #bbdefb;
+    }
+
+    /* Charts */
+    .charts-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .chart {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .chart h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .chart-placeholder {
+        height: 200px;
+        background-color: #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 14px;
+    }
+</style>
 
 <div class="main-content">
     <header>
         <h2>Dashboard <span>Control Panel</span></h2>
         <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
+
     <!-- ruang kreasi developer -->
     <div class="dashboard">
-    <div class="container">
-        <div class="header">
-            <h1>Kendaraan Keluar <span>Data kendaraan keluar</span></h1>
-        </div>
-        <table id="kendaraan">
-            <thead>
-                <tr>
-                    <th>NO</th>
-                    <th>NO. PLAT</th>
-                    <th>PENGEMUDI</th>
-                    <th>JENIS KENDARAAN</th>
-                    <th>WAKTU MASUK</th>
-                    <th>WAKTU KELUAR</th>
-                    <th>DURASI</th>
-                    <th>BIAYA</th>
-                    <th>OPSI</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $dataKendaraan = getDataKendaraan();
-                $no = 1;
-                foreach ($dataKendaraan as $kendaraan) {
-                    echo "<tr>";
-                    echo "<td>{$no}</td>";
-                    echo "<td>{$kendaraan['no_plat']}</td>";
-                    echo "<td>{$kendaraan['pengemudi']}</td>";
-                    echo "<td>{$kendaraan['id_kendaraan']}</td>"; // Pastikan ini sesuai dengan kolom di database
-                    echo "<td>{$kendaraan['waktu_masuk']}</td>";
-                    echo "<td>{$kendaraan['waktu_keluar']}</td>";
-                    echo "<td>{$kendaraan['durasi']}</td>";
-                    echo "<td>{$kendaraan['biaya']}</td>";
-                    echo "<td class='button'>";
-
-                    // Menambahkan tombol Lihat PDF
-                    if (!empty($kendaraan['file_pdf'])) { // Ganti 'file_pdf' dengan nama kolom yang sesuai
-                        echo "<button class='btn btn-success' onclick='window.open(\"" . htmlspecialchars($kendaraan['file_pdf']) . "\", \"_blank\")'>
-                                <i class='fa-solid fa-file'></i> Lihat PDF
-                              </button>";
-                    } else {
-                        echo "<p>No File</p>";
-                    }
-
-                    echo "<button class='btn btn-warning' onclick='confirmAction(\"batalKeluar\", {$kendaraan['id']})'>
-                            <i class='fa-solid fa-xmark'></i> Batal
-                          </button>";
-                    echo "<button class='btn btn-danger' onclick='confirmAction(\"hapusKendaraan\", {$kendaraan['id']})'>
-                            <i class='fa-solid fa-trash-can'></i> Hapus
-                          </button>";
-                    echo "</td>";
-                    echo "</tr>";
-                    $no++;
-                }
-                ?>
+        <div class="container">
+            <div class="header">
+                <h1>Kendaraan Keluar <span>Data kendaraan keluar</span></h1>
+            </div>
+            <table id="kendaraan">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>NO. PLAT</th>
+                        <th>PENGEMUDI</th>
+                        <th>JENIS KENDARAAN</th>
+                        <th>WAKTU MASUK</th>
+                        <th>WAKTU KELUAR</th>
+                        <th>DURASI</th>
+                        <th>BIAYA</th>
+                        <th>OPSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>B 9989 HJU</td>
+                        <td>-</td>
+                        <td>MINIBUS</td>
+                        <td>13-06-2023 14:12:29</td>
+                        <td>13-06-2023 14:14:07</td>
+                        <td>0 jam, 1 menit, 38 detik</td>
+                        <td>Rp.15,000,-</td>
+                        <td class="button">
+                            <button class="btn btn-success"><i class="fa-solid fa-file"></i></button>
+                            <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

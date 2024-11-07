@@ -6,7 +6,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $id_parkir = $_GET['id'];
-        function mengambil_ambil_kendaraan_keluar($id_parkir)
+        function mengambil_kendaraan_keluar($id_parkir)
         {
             global $db;
 
