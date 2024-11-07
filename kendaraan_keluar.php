@@ -1,21 +1,5 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<?php
-if (isset($_GET['action']) && isset($_GET['id'])) {
-    $action = $_GET['action'];
-    $id = (int) $_GET['id'];
-
-    if ($action == 'hapusKendaraan') {
-        hapusKendaraan($id);
-        echo "<script>alert('Data kendaraan berhasil dihapus.');</script>";
-    } elseif ($action == 'batalKeluar') {
-        batalKeluar($id);
-        echo "<script>alert('Batal keluar berhasil.');</script>";
-    }
-
-    echo "<script>window.location.href = 'siparkir_kendaraan_keluar.php';</script>"; 
-}
-?>
 <link rel="stylesheet" href="assets/CSS/siparkir_kendaraan_keluar.css?v=1.1">
 <style>
     /* General Reset */
@@ -220,7 +204,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     echo number_format($jam*$row['biaya'],0,",",".");?></td>
                         <td class="button">
                             <button class="btn btn-warning"><i class="fa-solid fa-xmark"></i> Batal</button>
-                            </td>
+                            <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
                     </tr>
                     <?php 
                         $no++;
