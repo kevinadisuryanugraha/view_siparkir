@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
-<link href="../assets/CSS/jenis_kendaraan.css" rel="stylesheet" type="text/css">
+<link href="../assets/CSS/jenis_kendaraan.css?v=1.1" rel="stylesheet" type="text/css">
 <link href="../assets/CSS/style.css" rel="stylesheet" type="text/css">
 <?php
 $vehicles = get_list_kendaraan();

@@ -188,8 +188,8 @@
                             <td><?php echo $row['no_plat']; ?></td>
                             <td><?php echo $row['pengemudi']; ?></td>
                             <td><?php echo $row['jenis_kendaraan']; ?></td>
-                            <td><?php echo $row['waktu_masuk']; ?></td>
-                            <td><?php echo $row['waktu_keluar']; ?></td>
+                            <td><?php echo date('d-m-Y H:i:s',strtotime($row['waktu_masuk'])); ?></td>
+                            <td><?php echo date('d-m-Y H:i:s',strtotime($row['waktu_keluar'])); ?></td>
                             <td><?php
                                 $waktu_masuk = $row['waktu_masuk'];
                                 $waktu_keluar = $row['waktu_keluar'];
