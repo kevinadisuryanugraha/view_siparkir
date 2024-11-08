@@ -184,7 +184,7 @@
                             <td><?php echo $row['email']; ?></td>
                             <td><?php echo $row['no_wa']; ?></td>
                             <td><?php echo $row['level_user']; ?></td>
-                            <td><a href="edit_user.php?id=<?php echo $row['id']; ?>" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="" class="icon-box"> <i class="fa fa-trash icon-color"></i></a></td>
+                            <td><a href="edit_user.php?id=<?php echo $row['id']; ?>" class="icon-box"> <i class="fa fa-gear"></i></a>| <a href="delete_user.php?id=<?php echo $row['id']; ?>" class="icon-box"> <i class="fa fa-trash icon-color"></i></a></td>
                         </tr>
                     <?php $no++;
                     endforeach ?>

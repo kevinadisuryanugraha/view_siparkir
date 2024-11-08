@@ -2,12 +2,12 @@
 
     require_once "../functions.php";
 
-        $delete = delete_kendaraan_masuk();
-        if($delete)
+        $delete_user = delete_user();
+        if($delete_user)
         {
             echo "<script>
             alert('data Berhasil dihapus');
-            window.location = 'kendaraan_masuk.php';
+            window.location = 'halaman_profil.php';
             </script>";
         }
         else
