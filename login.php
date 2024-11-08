@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,18 +47,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Siparkir</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
-        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/CSS/login.css?v=1.1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/CSS/login.css?v=1.2">
 </head>
 
 <body>
     <div class="pure-g wrap-card">
         <div class="pure-u-1 pure-u-md-1-2 card-1">
             <h1>Selamat Datang di Siparkir</h1>
-            <h4>Silahkan Parkirkan Kendaraan Anda. <br> Aman, Terjamin dan Amanah</h4>
+            <h4>Aman, Terjamin, dan Amanah untuk Parkir Kendaraan Anda</h4>
             <div style="text-align: center;">
-                <img src="assets/images/parkir.png" alt="Library Image" style="max-width: 50%; margin-top: 10px;">
+                <img src="assets/images/parkir.png" alt="Parkir Image" class="image-responsive">
             </div>
             <form class="pure-form pure-form-stacked" action="" method="post">
                 <label for="email">Masukkan Email</label>
@@ -69,11 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="password" name="password" id="password" required>
 
                 <input type="submit" name="submit" value="Login" class="pure-button pure-button-primary">
-                <br>
             </form>
         </div>
     </div>
-
 </body>
 
 </html>
