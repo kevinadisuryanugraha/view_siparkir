@@ -198,9 +198,7 @@
 
                                 echo floor($durasi / 3600) . 'jam' . floor($durasi / 60 % 60) . 'menit' . $durasi % 60 . 'detik';
                                 ?></td>
-                            <td>Rp.<?php
-                                    $jam = floor($durasi / 3600);
-                                    echo number_format($jam * $row['biaya'], 0, ",", "."); ?></td>
+                            <td>Rp.<?php echo number_format($row['biaya'], 0, ",", "."); ?></td>
                         </tr>
                     <?php
                         $no++;
