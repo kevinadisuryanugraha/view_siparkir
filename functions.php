@@ -180,7 +180,7 @@ function ambil_data_kendaraan_masuk()
     $sql_ambil_data_transaksi = "SELECT siparkir_transaksi.*, siparkir_kendaraan.jenis_kendaraan
             FROM siparkir_transaksi
             LEFT JOIN siparkir_kendaraan 
-            ON siparkir_transaksi.id_kendaraan = siparkir_kendaraan.id";
+            ON siparkir_transaksi.id_kendaraan = siparkir_kendaraan.id ORDER BY siparkir_transaksi.id DESC";
     $eksekusi = $db->query($sql_ambil_data_transaksi);
     $result = array();
 
@@ -211,7 +211,7 @@ function tampil_data_kendaraan_keluar()
     $sql_tampil_data_transaksi = "SELECT siparkir_transaksi.*, siparkir_kendaraan.*
             FROM siparkir_transaksi
             LEFT JOIN siparkir_kendaraan 
-            ON siparkir_transaksi.id_kendaraan = siparkir_kendaraan.id";
+            ON siparkir_transaksi.id_kendaraan = siparkir_kendaraan.id ORDER BY siparkir_transaksi.id DESC";
     $eksekusi = $db->query($sql_tampil_data_transaksi);
     $result = array();
 

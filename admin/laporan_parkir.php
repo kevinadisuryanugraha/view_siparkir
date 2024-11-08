@@ -67,9 +67,9 @@ if ($startDate && $endDate) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($dataLaporan as $index => $row): ?>
+                        <?php $no=1; foreach ($dataLaporan as $row): ?>
                             <tr>
-                                <td><?php echo $index + 1; ?></td>
+                                <td><?php echo $no; ?></td>
                                 <td><?php echo htmlspecialchars($row['no_plat']); ?></td>
                                 <td><?php echo htmlspecialchars($row['pengemudi']); ?></td>
                                 <td><?php echo htmlspecialchars($row['id_kendaraan']); ?></td>
@@ -78,7 +78,7 @@ if ($startDate && $endDate) {
                                 <td><?php echo htmlspecialchars($row['durasi']); ?></td>
                                 <td>Rp <?php echo number_format($row['biaya'], 0, ',', '.'); ?></td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php $no++; endforeach; ?>
                     </tbody>
                 </table>
                 <div class="total">
