@@ -24,7 +24,7 @@ $eksekusi = edit_kendaraan_parkir_masuk();  // Ambil data kendaraan yang akan di
 <div class="main-content">
     <header>
         <h2>Dashboard <span>Control Panel</span></h2>
-        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"  onclick="return confirm('yakin ingin keluar??')"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
     <!-- START KREASI DEVELOPMENT -->
     <h1>Kendaraan Masuk</h1>

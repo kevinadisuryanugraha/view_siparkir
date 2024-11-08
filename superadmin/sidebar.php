@@ -70,6 +70,6 @@
         <a href="kendaraan_masuk.php"><i class="fas fa-car"></i> Kendaraan Masuk</a>
         <a href="laporan_parkir.php"><i class="fas fa-file-alt"></i> Laporan Parkir</a>
         <a href="kendaraan_keluar.php"><i class="fas fa-car"></i> Kendaraan Keluar</a>
-        <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="../logout.php"  onclick="return confirm('yakin ingin keluar??')"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </nav>
 </aside>

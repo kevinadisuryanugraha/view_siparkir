@@ -52,7 +52,7 @@ $data_kendaraan = ambil_data_kendaraan_keluar($id_parkir);
 <div class="main-content">
     <header>
         <h2>Dashboard <span>Control Panel</span></h2>
-        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"  onclick="return confirm('yakin ingin keluar??')"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
     <div class="container">

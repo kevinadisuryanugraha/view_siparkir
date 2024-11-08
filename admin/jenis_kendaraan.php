@@ -10,7 +10,7 @@ delete_kendaraan();
 <div class="main-content">
     <header>
         <h2>Jenis Kendaraan & Biaya <span>Pengaturan biaya parkir</span></h2>
-        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"  onclick="return confirm('yakin ingin keluar??')"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
     <!-- ruang kreasi developer -->

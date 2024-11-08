@@ -20,7 +20,7 @@ if ($startDate && $endDate) {
 <div class="main-content">
     <header>
         <h2>Laporan Pemasukan <span>Control Panel</span></h2>
-        <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a href="../logout.php" class="logout-btn"  onclick="return confirm('yakin ingin keluar??')"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </header>
 
     <!-- ruang kreasi developer -->
