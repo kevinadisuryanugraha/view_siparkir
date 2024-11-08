@@ -62,8 +62,6 @@
                 /* Menambahkan padding lebih besar saat hover untuk efek lebih halus */
             }
         </style>
-        <h2>Habib</h2>
-        <p>Santri</p>
     </div>
     <nav>
         <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>

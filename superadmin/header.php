@@ -1,9 +1,12 @@
 <?php
-require_once "functions.php";
+require_once "../functions.php";
 session_start();
 
 if (!isset($_SESSION['log-in']) || $_SESSION['level_user'] != 'superadmin') {
-    header("Location: ../login.php");
+    echo "<script>
+    alert('Login Terlebih Dahulu');
+    window.location='../login.php';
+    </script>";
     exit;
 }
 

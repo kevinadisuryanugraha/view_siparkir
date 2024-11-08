@@ -19,7 +19,6 @@ delete_kendaraan();
             <h1>Jenis Kendaraan & Biaya</h1>
             <div class="button">
                 <a href="tambah_kendaraan.php"><button>+ Tambah</button></a>
-                <button> Cetak PDF</button>
             </div>
         </div>
 

@@ -1,48 +1,8 @@
-<?php
-// index.php
-// define('DB_HOST', 'localhost');  // Ganti dengan host database jika diperlukan
-// define('DB_USER', 'root');       // Ganti dengan username database Anda
-// define('DB_PASS', '');           // Ganti dengan password database Anda
-// define('DB_NAME', 'db_siparkir'); // Ganti dengan nama database Anda
-
-// // Fungsi untuk membuka koneksi database
-// function add_user($nama, $email, $password, $level_user) {
-//     // Memastikan koneksi ke database
-//     $conn = db_connect();  // Koneksi ke database
-
-//     // Pastikan level_user adalah salah satu nilai yang valid dari ENUM
-//     $valid_levels = ['superadmin', 'admin'];
-//     if (!in_array($level_user, $valid_levels)) {
-//         echo "Level user tidak valid.";
-//         return false;
-//     }
-
-//     // Hash password
-//     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-//     // Query dengan concatenation (perhatikan potensi SQL Injection)
-//     $sql = "INSERT INTO siparkir_user (nama, email, password, level_user) 
-//             VALUES ('$nama', '$email', '$hashed_password', '$level_user')";
-
-//     // Eksekusi query
-//     if ($conn->query($sql) === TRUE) {
-//         return true;  // Berhasil menambah user
-//     } else {
-//         return false;  // Gagal menambah user
-//     }
-
-//     // Tutup koneksi
-//     $conn->close();
-//     return false;
-// }       
-
-?>
-
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
 <link href="../assets/CSS/style.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="../assets/CSS/add_user.css">
-
+<?php add_user();?>
 
 <div class="main-content">
     <header>
@@ -54,7 +14,7 @@
      <div class="container">
         <h2>Tambah Pengguna Baru</h2>
         
-        <form action="add_user.php" method="POST">
+        <form action="" method="POST">
     <div class="form-group">
         <label>Name</label>
         <input type="text" name="nama" required>
@@ -64,10 +24,15 @@
         <label>Email</label>
         <input type="text" name="email" required>
     </div>
+
+    <div class="form-group">
+        <label>Nomor Whatasapp</label>
+        <input type="number" name="no_wa" required>
+    </div>
     
     <div class="form-group">
         <label>Password</label>
-        <input type="text" name="password" required>
+        <input type="password" name="password" required>
     </div>
 
     <div class="form-group">

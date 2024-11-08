@@ -3,5 +3,9 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: login.php");
+
+echo "<script>
+alert('Berhasil Logout');
+window.location='login.php';
+</script>";
 exit();

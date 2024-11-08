@@ -1,137 +1,107 @@
-/* Reset and Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+    /* Masukkan gaya CSS langsung di sini */
+    body {
+        background-color: #f0f2f5;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+    }
 
-body {
-    background-color: #f0f2f5;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-}
+    .container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        width: 100%;
+    }
 
-/* Container Styles */
-.container {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    padding: 2rem;
-}
+    h2 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
 
-.container h2 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 0.5rem;
-}
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
 
-/* Header Section with Search and Add Button */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #374151;
+    }
 
-.add-button {
-    background-color: #22c55e;
-    color: white;
-    padding: 0.625rem 1rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.2s;
-}
+    input[type="text"],
+    input[type="number"],
+    input[type="password"],
+    input[type="email"],
+    input[type="file"] {
+        width: 100%;
+        padding: 0.625rem;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 0.875rem;
+    }
 
-.add-button:hover {
-    background-color: #16a34a;
-}
+    .radio-group {
+        display: flex;
+        gap: 1rem;
+    }
 
-.search input {
-    padding: 0.5rem 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    width: 250px;
-    font-size: 0.875rem;
-}
+    .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #374151;
+        font-weight: 500;
+    }
 
-.search input:focus {
-    outline: 2px solid #22c55e;
-    outline-offset: -1px;
-    border-color: transparent;
-}
+    .file-input label {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border: 1px solid #d1d5db;
+        background-color: #f8fafc;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #4b5563;
+        font-size: 0.875rem;
+    }
 
-/* Table Styles for Index Page */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
+    .file-input input[type="file"] {
+        display: none;
+    }
 
-th {
-    background-color: #f8fafc;
-    font-weight: 600;
-    text-align: left;
-    padding: 0.75rem 1rem;
-    color: #4b5563;
-    border-bottom: 2px solid #e5e7eb;
-}
+    .form-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
 
-td {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #e5e7eb;
-    color: #1f2937;
-}
+    .form-buttons button,
+    .form-buttons a {
+        padding: 0.625rem 1.25rem;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.875rem;
+        cursor: pointer;
+        text-decoration: none;
+    }
 
-.user-photo {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: #e5e7eb;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #9ca3af;
-}
+    button[type="submit"] {
+        background-color: #22c55e;
+        color: white;
+        border: none;
+    }
 
-/* Action Buttons */
-.edit-btn,
-.delete-btn {
-    padding: 0.375rem 0.75rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.875rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-}
+    button[type="submit"]:hover {
+        background-color: #16a34a;
+    }
 
-.edit-btn {
-    background-color: #eab308;
-    color: white;
-    margin-right: 0.5rem;
-}
+    .cancel-button {
+        background-color: #e5e7eb;
+        color: #4b5563;
+    }
 
-.edit-btn:hover {
-    background-color: #ca8a04;
-}
-
-.delete-btn {
-    background-color: #ef4444;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.delete-btn:hover {
-    background-color: #dc2626;
-}
+    .cancel-button:hover {
+        background-color: #d1d5db;
+    }
